@@ -1,9 +1,10 @@
-package xyz.laziness.dailycommit
+package xyz.laziness.dailycommit.activities
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_my_status.*
+import xyz.laziness.dailycommit.R
 
 class MyStatusActivity : AppCompatActivity() {
 
@@ -26,6 +27,7 @@ class MyStatusActivity : AppCompatActivity() {
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_status)
 
