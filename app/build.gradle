@@ -24,6 +24,7 @@ android {
 
 ext {
     daggerVersion = '2.11'
+    fireBaseVersion = '15.0.0'
 }
 
 dependencies {
@@ -45,4 +46,10 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:${daggerVersion}"
     annotationProcessor "com.google.dagger:dagger-compiler:${daggerVersion}"
     compileOnly 'javax.annotation:jsr250-api:1.0'
+
+    // FireBase
+    implementation "com.google.firebase:firebase-core:${fireBaseVersion}"
+    implementation "com.google.firebase:firebase-auth:${fireBaseVersion}"
 }
+
+apply plugin: 'com.google.gms.google-services'
