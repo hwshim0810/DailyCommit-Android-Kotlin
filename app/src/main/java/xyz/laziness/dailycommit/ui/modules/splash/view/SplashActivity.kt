@@ -4,7 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.ui.base.view.BaseActivity
-import xyz.laziness.dailycommit.ui.modules.login.LoginActivity
+import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
 import xyz.laziness.dailycommit.ui.modules.main.MainActivity
 import xyz.laziness.dailycommit.ui.modules.splash.presenter.SplashPresenter
 import javax.inject.Inject
