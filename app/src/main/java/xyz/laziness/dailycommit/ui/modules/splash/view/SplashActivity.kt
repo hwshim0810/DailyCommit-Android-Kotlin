@@ -6,14 +6,15 @@ import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.ui.base.view.BaseActivity
 import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
 import xyz.laziness.dailycommit.ui.modules.main.MainActivity
-import xyz.laziness.dailycommit.ui.modules.splash.presenter.SplashPresenter
+import xyz.laziness.dailycommit.ui.modules.splash.interactor.SplashInteractor
+import xyz.laziness.dailycommit.ui.modules.splash.presenter.SplashPresenterImpl
 import javax.inject.Inject
 
 
 class SplashActivity : BaseActivity(), SplashView {
 
     @Inject
-    private lateinit var presenter: SplashPresenter<SplashView>
+    private lateinit var presenter: SplashPresenterImpl<SplashView, SplashInteractor>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -1,21 +1,14 @@
 package xyz.laziness.dailycommit.ui.modules.splash.presenter
 
 import xyz.laziness.dailycommit.ui.base.presenter.BasePresenter
+import xyz.laziness.dailycommit.ui.modules.splash.interactor.SplashInteractor
 import xyz.laziness.dailycommit.ui.modules.splash.view.SplashView
 
 
-class SplashPresenter<V: SplashView> : BasePresenter<V>(), SplashContract<V> {
+interface SplashPresenter<V: SplashView, I: SplashInteractor> : BasePresenter<V, I> {
 
-    override fun onAttach(view: V?) {
-        super.onAttach(view)
-        chooseStartActivity()
-    }
+    fun chooseStartActivity(): Unit?
 
-    override fun chooseStartActivity() = getView()?.let {
-        if (isLogin())
-            it.startMainActivity()
-        else
-            it.startLoginActivity()
-    }
+    fun isLogin(): Boolean
 
 }
