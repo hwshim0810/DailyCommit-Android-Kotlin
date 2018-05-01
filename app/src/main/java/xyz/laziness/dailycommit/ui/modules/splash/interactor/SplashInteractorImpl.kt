@@ -8,4 +8,4 @@ import javax.inject.Inject
 
 class SplashInteractorImpl
     @Inject constructor(private val context: Context,
-                        private val appPreference: BasePreference) : BaseInteractorImpl(), SplashInteractor
+                        appPreference: BasePreference) : BaseInteractorImpl(), SplashInteractor

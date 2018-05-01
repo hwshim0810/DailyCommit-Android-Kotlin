@@ -8,7 +8,7 @@ import javax.inject.Inject
 open class BaseInteractorImpl : BaseInteractor {
 
     @Inject
-    private lateinit var appPreference: BasePreference
+    internal lateinit var appPreference: BasePreference
 
     override fun isLogin(): Boolean = this.appPreference.getCurrentLoginState() != AppConstants.LoginState.LOGOUT.state
 
