@@ -5,8 +5,10 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
+import xyz.laziness.dailycommit.di.qualifiers.PreferenceInfo
 import xyz.laziness.dailycommit.data.preference.AppPreference
 import xyz.laziness.dailycommit.data.preference.BasePreference
+import xyz.laziness.dailycommit.utils.AppConstants
 import xyz.laziness.dailycommit.utils.io.SchedulerHelper
 import javax.inject.Singleton
 
@@ -17,6 +19,10 @@ class AppModule {
     @Provides
     @Singleton
     internal fun provideContext(application: Application): Context = application
+
+    @Provides
+    @PreferenceInfo
+    internal fun providePrefFileName(): String = AppConstants.PREF_NAME
 
     @Provides
     @Singleton
