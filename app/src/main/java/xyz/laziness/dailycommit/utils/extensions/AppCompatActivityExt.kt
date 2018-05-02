@@ -7,9 +7,16 @@ import android.support.v4.app.FragmentTransaction
 import android.support.v7.app.AppCompatActivity
 
 
-fun AppCompatActivity.replaceFragmentInActivity(fragment: Fragment, @IdRes frameId: Int) {
+fun AppCompatActivity.replaceFragmentInActivity(fragment: Fragment, @IdRes frameId: Int, addStack: Boolean = true) {
     supportFragmentManager.transact {
         replace(frameId, fragment)
+        takeIf { addStack }?.apply { addToBackStack(null) }
+    }
+}
+
+fun AppCompatActivity.addFragmentInActivity(fragment: Fragment, @IdRes frameId: Int) {
+    supportFragmentManager.transact {
+        add(frameId, fragment)
     }
 }
 
