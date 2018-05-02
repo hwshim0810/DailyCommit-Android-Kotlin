@@ -7,4 +7,12 @@ object AppConstants {
         LOGOUT(0),
         LOGIN_GITHUB(1)
     }
+
+    enum class LoginMethod {
+        BASIC,
+        TOKEN,
+        WEB
+    }
+
+    internal const val PREF_NAME = "daily_pref"
 }
