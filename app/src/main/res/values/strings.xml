@@ -1,6 +1,16 @@
 <resources>
     <string name="app_name">DailyCommit</string>
+    <string name="app_scheme">dc</string>
+    <string name="app_login_host">login</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="access_token">AccessToken</string>
+
+    <string name="basic_login">Basic Authentication</string>
+    <string name="token_login">AccessToken Authentication</string>
+    <string name="submit">Submit</string>
 </resources>
