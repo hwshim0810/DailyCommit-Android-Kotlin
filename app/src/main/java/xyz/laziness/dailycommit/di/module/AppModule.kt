@@ -5,6 +5,8 @@ import android.content.Context
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
+import xyz.laziness.dailycommit.data.network.github.GitHubApiHelper
+import xyz.laziness.dailycommit.data.network.github.GitHubApi
 import xyz.laziness.dailycommit.di.qualifiers.PreferenceInfo
 import xyz.laziness.dailycommit.data.preference.AppPreference
 import xyz.laziness.dailycommit.data.preference.BasePreference
@@ -27,6 +29,10 @@ class AppModule {
     @Provides
     @Singleton
     internal fun provideAppPref(appPreference: AppPreference): BasePreference = appPreference
+
+    @Provides
+    @Singleton
+    internal fun provideGithubApiHelper(gitHubApiHelper: GitHubApiHelper): GitHubApi = gitHubApiHelper
 
     @Provides
     internal fun provideCompositeDisposable(): CompositeDisposable = CompositeDisposable()
