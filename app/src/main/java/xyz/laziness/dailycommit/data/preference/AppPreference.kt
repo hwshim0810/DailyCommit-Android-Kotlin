@@ -13,21 +13,21 @@ class AppPreference
 
     companion object {
         private const val PREF_KEY_LOGIN_STATE = "PREF_KEY_LOGIN_STATE"
+        private const val PREF_KEY_LOGIN_METHOD = "PREF_KEY_LOGIN_METHOD"
+        private const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
     }
 
     private val prefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
 
     override fun getCurrentLoginState(): Int = prefs.getInt(PREF_KEY_LOGIN_STATE, AppConstants.LoginState.LOGOUT.state)
 
-    override fun setCurrentLoginState(type: AppConstants.LoginState) {
-        prefs.edit { putInt(PREF_KEY_LOGIN_STATE, type.state) }
-    }
+    override fun setCurrentLoginState(type: AppConstants.LoginState) = prefs.edit { putInt(PREF_KEY_LOGIN_STATE, type.state) }
 
-    override fun setCurrentUserId(userId: String?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getCurrentLoginMethod(): Int = prefs.getInt(PREF_KEY_LOGIN_METHOD, AppConstants.LoginMethod.BASIC.state)
 
-    override fun getCurrentUserId(): String? {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun setCurrentLoginMethod(loginMethod: AppConstants.LoginMethod) = prefs.edit { putInt(PREF_KEY_LOGIN_METHOD, loginMethod.state) }
+
+    override fun getCurrentUserToken(): String? = prefs.getString(PREF_KEY_ACCESS_TOKEN, "")
+
+    override fun setCurrentUserToken(userToken: String?) = prefs.edit { putString(PREF_KEY_ACCESS_TOKEN, userToken) }
 }

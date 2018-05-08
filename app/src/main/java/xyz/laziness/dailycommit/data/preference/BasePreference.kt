@@ -9,8 +9,12 @@ interface BasePreference {
 
     fun setCurrentLoginState(type: AppConstants.LoginState)
 
-    fun setCurrentUserId(userId: String?)
+    fun getCurrentLoginMethod(): Int
 
-    fun getCurrentUserId(): String?
+    fun setCurrentLoginMethod(loginMethod: AppConstants.LoginMethod)
+
+    fun setCurrentUserToken(userToken: String?)
+
+    fun getCurrentUserToken(): String?
 
 }
