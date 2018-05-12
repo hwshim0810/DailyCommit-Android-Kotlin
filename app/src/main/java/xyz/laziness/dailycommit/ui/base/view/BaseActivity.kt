@@ -29,6 +29,8 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
         }
     }
 
+    override fun showErrorMessage() = Toast.makeText(this, getString(R.string.unknown_error_msg), Toast.LENGTH_SHORT).show()
+
     override fun finishView() = finish()
 
 }

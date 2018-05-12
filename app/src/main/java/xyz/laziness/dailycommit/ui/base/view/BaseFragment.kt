@@ -35,6 +35,8 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     override fun showBackButtonToast(backMessageCode: Int) = getBaseActivity().showBackButtonToast(backMessageCode)
 
+    override fun showErrorMessage() = getBaseActivity().showErrorMessage()
+
     override fun finishView() = getBaseActivity().finishView()
 
 }

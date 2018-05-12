@@ -5,6 +5,8 @@ interface BaseView {
 
     fun showBackButtonToast(backMessageCode: Int)
 
+    fun showErrorMessage()
+
     fun finishView()
 
 }

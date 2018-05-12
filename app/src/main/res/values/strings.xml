@@ -2,15 +2,33 @@
     <string name="app_name">DailyCommit</string>
     <string name="app_scheme">dc</string>
     <string name="app_login_host">login</string>
+
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <string name="logout">Logout</string>
+
     <string name="email">Email</string>
+    <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="access_token">AccessToken</string>
 
     <string name="basic_login">Basic Authentication</string>
     <string name="token_login">AccessToken Authentication</string>
     <string name="submit">Submit</string>
+
+    <string name="drawer_open">Open drawer</string>
+    <string name="drawer_close">Close drawer</string>
+
+    <!--Toast Messages-->
+    <string name="empty_username_msg">Username cannot be blank</string>
+    <string name="empty_token_msg">AccessToken cannot be blank</string>
+    <string name="empty_password_msg">Password cannot be blank</string>
+    <string name="invalid_email_msg">Please Enter a valid email</string>
+    <string name="login_failure_msg">Login failed!</string>
+    <string name="back_pressed_msg">Press once again to exit</string>
+    <string name="back_pressed_error_msg">Exit failed!</string>
+    <string name="unknown_error_msg">Unknown error :(</string>
+
 </resources>
