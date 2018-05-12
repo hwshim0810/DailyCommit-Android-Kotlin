@@ -12,4 +12,6 @@ interface BasePresenter<V: BaseView, I: BaseInteractor> {
 
     fun getView(): V?
 
+    fun onBackPressed()
+
 }

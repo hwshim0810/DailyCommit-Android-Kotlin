@@ -1,5 +1,6 @@
 package xyz.laziness.dailycommit.utils.io
 
+import io.reactivex.FlowableTransformer
 import io.reactivex.ObservableTransformer
 import io.reactivex.SingleTransformer
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -18,6 +19,11 @@ class SchedulerHelper {
     }
 
     fun <T> ioToMainSingleScheduler(): SingleTransformer<T, T> = SingleTransformer { upstream ->
+        upstream.subscribeOn(getIOThreadScheduler())
+                .observeOn(getMainThreadScheduler())
+    }
+
+    fun <T> ioToMainFlowableScheduler(): FlowableTransformer<T, T> = FlowableTransformer { upstream ->
         upstream.subscribeOn(getIOThreadScheduler())
                 .observeOn(getMainThreadScheduler())
     }

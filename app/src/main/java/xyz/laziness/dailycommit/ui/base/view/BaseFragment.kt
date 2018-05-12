@@ -7,7 +7,7 @@ import android.view.View
 import dagger.android.support.AndroidSupportInjection
 
 
-abstract class BaseFragment : Fragment() {
+abstract class BaseFragment : Fragment(), BaseView {
 
     private lateinit var parentActivity: BaseActivity
 
@@ -32,4 +32,9 @@ abstract class BaseFragment : Fragment() {
     private fun injection() = AndroidSupportInjection.inject(this)
 
     abstract fun initUI()
+
+    override fun showBackButtonToast(backMessageCode: Int) = getBaseActivity().showBackButtonToast(backMessageCode)
+
+    override fun finishView() = getBaseActivity().finishView()
+
 }
