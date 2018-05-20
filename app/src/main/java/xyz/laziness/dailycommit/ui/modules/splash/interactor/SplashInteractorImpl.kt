@@ -7,5 +7,4 @@ import javax.inject.Inject
 
 
 class SplashInteractorImpl
-    @Inject constructor(private val context: Context,
-                        appPreference: BasePreference) : BaseInteractorImpl(), SplashInteractor
+    @Inject constructor(private val context: Context, appPreference: BasePreference) : BaseInteractorImpl(appPreference), SplashInteractor
