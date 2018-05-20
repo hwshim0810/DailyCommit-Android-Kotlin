@@ -14,4 +14,6 @@ interface BasePresenter<V: BaseView, I: BaseInteractor> {
 
     fun onBackPressed()
 
+    fun onError(): Unit?
+
 }

@@ -46,4 +46,6 @@ abstract class BasePresenterImpl<V: BaseView, I: BaseInteractor>
 
     override fun onBackPressed() = backButtonSubject.onNext(System.currentTimeMillis())
 
+    override fun onError() = getView()?.showErrorMessage()
+
 }
