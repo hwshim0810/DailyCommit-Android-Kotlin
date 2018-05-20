@@ -33,4 +33,6 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     override fun finishView() = finish()
 
+    fun superOnBackPressed() = super.onBackPressed()
+
 }
