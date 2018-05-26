@@ -34,8 +34,8 @@ class SplashActivity : BaseActivity(), SplashView {
         finish()
     }
 
-    override fun startLoginActivity() {
-        startActivity(Intent(this, LoginActivity::class.java))
+    override fun startLoginActivity() = Intent(this, LoginActivity::class.java).run {
+        startActivity(this)
         finish()
     }
 }
