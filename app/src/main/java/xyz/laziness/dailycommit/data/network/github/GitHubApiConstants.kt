@@ -11,5 +11,7 @@ object GitHubApiConstants {
     const val REST_URL = "https://api.github.com"
     const val REST_LOGIN_URL = "$REST_URL/authorizations"
 
+    const val USER_INFO_URL = "$REST_URL/user"
+
     const val REQUST_SCOPE = "user repo"
 }

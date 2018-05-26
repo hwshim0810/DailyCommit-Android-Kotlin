@@ -7,6 +7,7 @@ import okhttp3.Credentials
 import okhttp3.OkHttpClient
 import xyz.laziness.dailycommit.data.network.github.request.LoginRequest
 import xyz.laziness.dailycommit.data.network.github.response.LoginResponse
+import xyz.laziness.dailycommit.data.network.github.response.UserInfoResponse
 import javax.inject.Inject
 
 
@@ -21,4 +22,14 @@ class GitHubApiHelper @Inject constructor() : GitHubApi {
                             .build())
                     .build()
                     .getObjectObservable(LoginResponse::class.java)
+
+    override fun doUserInfoApiCall(token: String): Observable<UserInfoResponse> =
+            Rx2AndroidNetworking.get(GitHubApiConstants.USER_INFO_URL)
+                    .addHeaders("Authorization", "token $token")
+                    .setOkHttpClient(OkHttpClient.Builder()
+                            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                            .build())
+                    .build()
+                    .getObjectObservable(UserInfoResponse::class.java)
+
 }

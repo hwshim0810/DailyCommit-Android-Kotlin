@@ -5,4 +5,12 @@ import xyz.laziness.dailycommit.ui.modules.main.interactor.MainInteractor
 import xyz.laziness.dailycommit.ui.modules.main.view.MainView
 
 
-interface MainPresenter<V: MainView, I: MainInteractor> : BasePresenter<V, I>
+interface MainPresenter<V: MainView, I: MainInteractor> : BasePresenter<V, I> {
+
+    fun initUserInfoRequest()
+
+    fun onDrawerLogoutItemClick()
+
+    fun setUserStatusDisplay(): Unit?
+
+}
