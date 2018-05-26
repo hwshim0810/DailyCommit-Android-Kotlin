@@ -1,5 +1,6 @@
 package xyz.laziness.dailycommit.ui.modules.login.view
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import dagger.android.AndroidInjector
@@ -11,6 +12,7 @@ import xyz.laziness.dailycommit.ui.modules.login.choice.view.LoginChoiceFragment
 import xyz.laziness.dailycommit.ui.modules.login.input.view.LoginInputFragment
 import xyz.laziness.dailycommit.ui.modules.login.interactor.LoginInteractor
 import xyz.laziness.dailycommit.ui.modules.login.presenter.LoginPresenter
+import xyz.laziness.dailycommit.ui.modules.main.view.MainActivity
 import xyz.laziness.dailycommit.utils.AppConstants
 import xyz.laziness.dailycommit.utils.BundleConstants
 import xyz.laziness.dailycommit.utils.extensions.replaceFragmentInActivity
@@ -74,8 +76,14 @@ class LoginActivity : BaseActivity(), LoginView, HasSupportFragmentInjector {
         }
     }
 
-    override fun startMainActivity() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun startMainActivity() = Intent(this, MainActivity::class.java).run {
+        startActivity(this)
+        finish()
+    }
+
+    override fun onViewBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) super.superOnBackPressed()
+        else presenter.onBackPressed()
     }
 
 }

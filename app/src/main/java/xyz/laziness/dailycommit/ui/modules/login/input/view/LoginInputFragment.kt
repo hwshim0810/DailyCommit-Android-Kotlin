@@ -27,7 +27,7 @@ class LoginInputFragment : BaseFragment(), LoginInputView {
     }
 
     @Inject
-    internal  lateinit var presenter: LoginInputPresenter<LoginInputView, LoginInputInteractor>
+    internal lateinit var presenter: LoginInputPresenter<LoginInputView, LoginInputInteractor>
 
     private var isBasic: Boolean = true
 

@@ -15,7 +15,8 @@ class LoginInputInteractorImpl
     override fun doServerBasicLoginApiCall(userName: String, password: String): Observable<LoginResponse> =
         apiHelper.doServerBasicLoginApiCall(userName, password)
 
-    override fun updateUserInfoInPreference(loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod) =
+
+    override fun updateLoginInfoInPreference(loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod) =
             appPreference.let {
                 it.setCurrentUserToken(loginResponse.token)
                 it.setCurrentLoginMethod(loginMethod)
