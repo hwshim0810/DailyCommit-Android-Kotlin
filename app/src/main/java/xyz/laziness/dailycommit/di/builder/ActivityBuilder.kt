@@ -7,6 +7,7 @@ import xyz.laziness.dailycommit.ui.modules.login.choice.LoginChoiceProvider
 import xyz.laziness.dailycommit.ui.modules.login.input.LoginInputProvider
 import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
 import xyz.laziness.dailycommit.ui.modules.main.MainModule
+import xyz.laziness.dailycommit.ui.modules.main.user.UserStatusProvider
 import xyz.laziness.dailycommit.ui.modules.main.view.MainActivity
 import xyz.laziness.dailycommit.ui.modules.splash.SplashModule
 import xyz.laziness.dailycommit.ui.modules.splash.view.SplashActivity
@@ -21,7 +22,7 @@ abstract class ActivityBuilder {
     @ContributesAndroidInjector(modules = [(LoginModule::class), (LoginChoiceProvider::class), (LoginInputProvider::class)])
     abstract fun bindLoginActivity(): LoginActivity
 
-    @ContributesAndroidInjector(modules = [(MainModule::class)])
+    @ContributesAndroidInjector(modules = [(MainModule::class), (UserStatusProvider::class)])
     abstract fun bindMainActivity(): MainActivity
 
 }
