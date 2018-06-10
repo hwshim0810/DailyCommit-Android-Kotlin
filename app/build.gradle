@@ -6,6 +6,11 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+Properties localProperties = new Properties()
+localProperties.load(rootProject.file('local.properties').newDataInputStream())
+
+def LOCAL_PROPERTIES = { key -> "${localProperties.get(key)}"}
+
 android {
     compileSdkVersion 27
     defaultConfig {
@@ -15,6 +20,9 @@ android {
         versionCode 1
         versionName "1.00"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "GITHUB_APP_ID", LOCAL_PROPERTIES("github_app_id"))
+        buildConfigField("String", "GITHUB_APP_SECRET", LOCAL_PROPERTIES("github_app_secret"))
     }
     buildTypes {
         release {
@@ -31,6 +39,7 @@ ext {
     rxjava2Version = '2.0.6'
     rxandroidVersion = '2.0.2'
     glideVersion = '4.7.1'
+    rx2FastAndroidNetworkingVersion = '1.0.1'
 }
 
 dependencies {
@@ -66,6 +75,9 @@ dependencies {
     // Glide
     implementation "com.github.bumptech.glide:glide:${glideVersion}"
     kapt "com.github.bumptech.glide:compiler:${glideVersion}"
+
+    // Network
+    implementation "com.amitshekhar.android:rx2-android-networking:${rx2FastAndroidNetworkingVersion}"
 }
 
 apply plugin: 'com.google.gms.google-services'
