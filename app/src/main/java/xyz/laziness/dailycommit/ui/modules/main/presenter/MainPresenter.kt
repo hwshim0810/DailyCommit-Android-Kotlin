@@ -7,7 +7,7 @@ import xyz.laziness.dailycommit.ui.modules.main.view.MainView
 
 interface MainPresenter<V: MainView, I: MainInteractor> : BasePresenter<V, I> {
 
-    fun initUserInfoRequest()
+    fun userInfoRequest()
 
     fun onDrawerLogoutItemClick()
 

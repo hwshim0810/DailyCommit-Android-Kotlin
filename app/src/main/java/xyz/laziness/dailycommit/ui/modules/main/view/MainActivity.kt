@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
+import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -20,6 +21,7 @@ import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
 import xyz.laziness.dailycommit.ui.modules.main.interactor.MainInteractor
 import xyz.laziness.dailycommit.ui.modules.main.presenter.MainPresenter
 import xyz.laziness.dailycommit.ui.modules.main.user.view.UserStatusFragment
+import xyz.laziness.dailycommit.utils.extensions.loadImage
 import xyz.laziness.dailycommit.utils.extensions.replaceFragmentInActivity
 import javax.inject.Inject
 
@@ -32,6 +34,8 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
     private val fragmentFrame: Fragment by lazy { supportFragmentManager.findFragmentById(R.id.contentFrame) }
+
+    var userInfo: UserInfoResponse? = null
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
 
@@ -63,6 +67,7 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setUpDrawer()
 
         presenter.onAttach(this)
         bottomNavView.setOnNavigationItemSelectedListener(bottomNavItemSelectedListener)
@@ -86,17 +91,27 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
         }
     }
 
-    override fun setUpDrawer(userInfoResponse: UserInfoResponse) {
+    override fun lockDrawer() = drawerLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+
+    override fun unlockDrawer() = drawerLayout?.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+
+    override fun setViewData(userInfoResponse: UserInfoResponse) {
+        userInfoResponse.apply {
+            navUserNameText.text = userName
+            navUserIdText.text = userId
+            userAvatarImage.loadImage(avatarUrl)
+            userInfo = this
+        }
+    }
+
+    private fun setUpDrawer() {
         setSupportActionBar(toolbar)
         ActionBarDrawerToggle(this, drawerLayout, toolbar,
                 R.string.drawer_open, R.string.drawer_close).run {
             drawerLayout.addDrawerListener(this)
             syncState()
         }
-        navUserNameText.text = userInfoResponse.userName
-        navUserIdText.text = userInfoResponse.userId
         drawerNavView.setNavigationItemSelectedListener(drawerNavItemSelectedListener)
-
     }
 
 }

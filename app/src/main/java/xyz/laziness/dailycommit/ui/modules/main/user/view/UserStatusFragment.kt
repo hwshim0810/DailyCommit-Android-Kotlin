@@ -1,13 +1,18 @@
 package xyz.laziness.dailycommit.ui.modules.main.user.view
 
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import kotlinx.android.synthetic.main.fragment_user_status.*
 import xyz.laziness.dailycommit.R
+import xyz.laziness.dailycommit.data.network.github.response.UserInfoResponse
 import xyz.laziness.dailycommit.ui.base.view.BaseFragment
 import xyz.laziness.dailycommit.ui.modules.main.user.interactor.UserStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.user.presenter.UserStatusPresenter
+import xyz.laziness.dailycommit.ui.modules.main.view.MainActivity
+import xyz.laziness.dailycommit.utils.extensions.loadImage
 import javax.inject.Inject
 
 
@@ -32,6 +37,21 @@ class UserStatusFragment : BaseFragment(), UserStatusView {
     }
 
     override fun initUI() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val parent = activity as MainActivity
+        parent.userInfo?.run { setUiData(this) } ?: presenter.userInfoRequest()
+
+    }
+
+    override fun setUiData(userInfoResponse: UserInfoResponse) {
+        userInfoResponse.apply {
+            imageViewStatusAvatar.loadImage(avatarUrl)
+            textViewStatusUsername.text = userName
+            textViewStatusBio.text = bio
+
+            if (!TextUtils.isEmpty(location)) {
+                layoutLocations.visibility = View.VISIBLE
+                textViewLocation.text = location
+            }
+        }
     }
 }

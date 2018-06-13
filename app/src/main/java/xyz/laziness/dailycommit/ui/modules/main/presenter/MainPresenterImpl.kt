@@ -20,19 +20,19 @@ class MainPresenterImpl<V: MainView, I: MainInteractor>
 
     override fun onAttach(view: V?) {
         super.onAttach(view)
-        initUserInfoRequest()
+        userInfoRequest()
         setUserStatusDisplay()
     }
 
     override fun setUserStatusDisplay() = getView()?.openUserStatusFragment()
 
-    override fun initUserInfoRequest() {
+    override fun userInfoRequest() {
         interactor?.let {
             compositeDisposable.add(
                     it.doUserInfoApiCall()
                             .compose(schedulerHelper.ioToMainObservableScheduler())
                             .subscribe({
-                                getView()?.setUpDrawer(it)
+                                getView()?.setViewData(it)
                             }, {
                                 it as ANError
                                 if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED)
