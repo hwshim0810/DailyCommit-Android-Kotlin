@@ -7,5 +7,6 @@ import xyz.laziness.dailycommit.ui.modules.main.user.view.UserStatusView
 
 interface UserStatusPresenter<V: UserStatusView, I: UserStatusInteractor> : BasePresenter<V, I> {
 
+    fun userInfoRequest()
 
 }
