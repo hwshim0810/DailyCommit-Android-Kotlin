@@ -15,5 +15,8 @@ data class UserInfoResponse(
     @SerializedName("name") var userName: String,
 
     @Expose
-    @SerializedName("bio") var bio: String
+    @SerializedName("bio") var bio: String,
+
+    @Expose
+    @SerializedName("location") var location: String
 ): Serializable
