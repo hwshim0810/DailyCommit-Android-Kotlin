@@ -18,6 +18,7 @@ import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.data.network.github.response.UserInfoResponse
 import xyz.laziness.dailycommit.ui.base.view.BaseActivity
 import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
+import xyz.laziness.dailycommit.ui.modules.main.friends.view.FriendsStatusFragment
 import xyz.laziness.dailycommit.ui.modules.main.interactor.MainInteractor
 import xyz.laziness.dailycommit.ui.modules.main.presenter.MainPresenter
 import xyz.laziness.dailycommit.ui.modules.main.user.view.UserStatusFragment
@@ -42,9 +43,11 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     private val bottomNavItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_user -> {
+                openUserStatusFragment()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_friends -> {
+                openFriendsStatusFragment()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_settings -> {
@@ -78,7 +81,10 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
         super.onDestroy()
     }
 
-    override fun onViewBackPressed() = presenter.onBackPressed()
+    override fun onViewBackPressed() {
+        if (supportFragmentManager.backStackEntryCount > 0) super.superOnBackPressed()
+        else presenter.onBackPressed()
+    }
 
     override fun startLoginActivity() = Intent(this, LoginActivity::class.java).run {
         startActivity(this)
@@ -87,6 +93,12 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
 
     override fun openUserStatusFragment() {
         fragmentFrame as UserStatusFragment? ?: UserStatusFragment.getInstance().also {
+            replaceFragmentInActivity(it, R.id.contentFrame, false)
+        }
+    }
+
+    override fun openFriendsStatusFragment() {
+        fragmentFrame as FriendsStatusFragment? ?: FriendsStatusFragment.getInstance().also {
             replaceFragmentInActivity(it, R.id.contentFrame, false)
         }
     }
