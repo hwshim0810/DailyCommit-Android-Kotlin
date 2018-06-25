@@ -42,6 +42,11 @@ ext {
     rx2FastAndroidNetworkingVersion = '1.0.1'
 }
 
+configurations {
+    cleanedAnnotations
+    compile.exclude group: 'org.jetbrains' , module:'annotations'
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
@@ -78,6 +83,10 @@ dependencies {
 
     // Network
     implementation "com.amitshekhar.android:rx2-android-networking:${rx2FastAndroidNetworkingVersion}"
+
+    // Jsoup
+    implementation 'org.jsoup:jsoup:1.10.3'
+    implementation 'com.github.florent37:rxjsoup:1.0.4'
 }
 
 apply plugin: 'com.google.gms.google-services'
