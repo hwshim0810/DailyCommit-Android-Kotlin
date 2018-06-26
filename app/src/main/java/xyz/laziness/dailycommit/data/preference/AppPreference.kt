@@ -15,6 +15,7 @@ class AppPreference
         private const val PREF_KEY_LOGIN_STATE = "PREF_KEY_LOGIN_STATE"
         private const val PREF_KEY_LOGIN_METHOD = "PREF_KEY_LOGIN_METHOD"
         private const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
+        private const val PREF_KEY_USER_NAME = "PREF_KEY_USER_NAME"
     }
 
     private val prefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
@@ -30,4 +31,8 @@ class AppPreference
     override fun getCurrentUserToken(): String? = prefs.getString(PREF_KEY_ACCESS_TOKEN, "")
 
     override fun setCurrentUserToken(userToken: String?) = prefs.edit { putString(PREF_KEY_ACCESS_TOKEN, userToken) }
+
+    override fun getCurrentUserName(): String = prefs.getString(PREF_KEY_USER_NAME, "")
+
+    override fun setCurrentUserName(userName: String) = prefs.edit { putString(PREF_KEY_USER_NAME, userName) }
 }

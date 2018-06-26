@@ -10,6 +10,6 @@ interface LoginInputInteractor : BaseInteractor {
 
     fun doServerBasicLoginApiCall(userName: String, password: String): Observable<LoginResponse>
 
-    fun updateLoginInfoInPreference(loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod)
+    fun updateLoginInfoInPreference(userName: String, loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod)
 
 }

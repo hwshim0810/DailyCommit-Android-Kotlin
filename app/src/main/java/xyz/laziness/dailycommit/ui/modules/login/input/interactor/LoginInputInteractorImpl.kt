@@ -16,8 +16,9 @@ class LoginInputInteractorImpl
         apiHelper.doServerBasicLoginApiCall(userName, password)
 
 
-    override fun updateLoginInfoInPreference(loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod) =
+    override fun updateLoginInfoInPreference(userName: String, loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod) =
             appPreference.let {
+                it.setCurrentUserName(userName)
                 it.setCurrentUserToken(loginResponse.token)
                 it.setCurrentLoginMethod(loginMethod)
                 it.setCurrentLoginState(AppConstants.LoginState.LOGIN_GITHUB)

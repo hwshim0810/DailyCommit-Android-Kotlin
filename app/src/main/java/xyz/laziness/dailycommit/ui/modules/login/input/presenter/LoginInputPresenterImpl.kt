@@ -30,7 +30,7 @@ class LoginInputPresenterImpl<V: LoginInputView, I: LoginInputInteractor>
                                 it.doServerBasicLoginApiCall(userName, secretKey)
                                         .compose(schedulerHelper.ioToMainObservableScheduler())
                                         .subscribe({ response ->
-                                            updateLoginInfoInPreference(response, AppConstants.LoginMethod.BASIC)
+                                            updateLoginInfoInPreference(userName, response, AppConstants.LoginMethod.BASIC)
                                             getView()?.startMainActivity()
                                         }, {
                                             it as ANError
@@ -46,7 +46,7 @@ class LoginInputPresenterImpl<V: LoginInputView, I: LoginInputInteractor>
 
     }
 
-    private fun updateLoginInfoInPreference(loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod) =
-            interactor?.updateLoginInfoInPreference(loginResponse, loginMethod)
+    private fun updateLoginInfoInPreference(userName: String, loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod) =
+            interactor?.updateLoginInfoInPreference(userName, loginResponse, loginMethod)
 
 }

@@ -17,4 +17,8 @@ interface BasePreference {
 
     fun getCurrentUserToken(): String?
 
+    fun setCurrentUserName(userName: String)
+
+    fun getCurrentUserName(): String
+
 }
