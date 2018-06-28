@@ -1,10 +1,13 @@
 package xyz.laziness.dailycommit.data.network.github
 
 import com.androidnetworking.interceptors.HttpLoggingInterceptor
+import com.github.florent37.rxjsoup.RxJsoup
 import com.rx2androidnetworking.Rx2AndroidNetworking
 import io.reactivex.Observable
 import okhttp3.Credentials
 import okhttp3.OkHttpClient
+import org.jsoup.Connection
+import org.jsoup.Jsoup
 import xyz.laziness.dailycommit.data.network.github.request.LoginRequest
 import xyz.laziness.dailycommit.data.network.github.response.LoginResponse
 import xyz.laziness.dailycommit.data.network.github.response.UserInfoResponse
@@ -32,4 +35,9 @@ class GitHubApiHelper @Inject constructor() : GitHubApi {
                     .build()
                     .getObjectObservable(UserInfoResponse::class.java)
 
+    override fun doContributionRequest(userName: String): Observable<Connection.Response> =
+            RxJsoup.connect(
+                    Jsoup.connect(GitHubApiConstants.CONTRIBUTION_URL.format(userName))
+                            .method(Connection.Method.GET)
+            )
 }
