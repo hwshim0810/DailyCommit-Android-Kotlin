@@ -40,6 +40,7 @@ ext {
     rxandroidVersion = '2.0.2'
     glideVersion = '4.7.1'
     rx2FastAndroidNetworkingVersion = '1.0.1'
+    roomDatabaseVersion = '1.1.1'
 }
 
 configurations {
@@ -87,6 +88,12 @@ dependencies {
     // Jsoup
     implementation 'org.jsoup:jsoup:1.10.3'
     implementation 'com.github.florent37:rxjsoup:1.0.4'
+
+    // RoomDatabase
+    implementation "android.arch.persistence.room:runtime:${roomDatabaseVersion}"
+    implementation "android.arch.persistence.room:rxjava2:${roomDatabaseVersion}"
+    annotationProcessor "android.arch.persistence.room:compiler:${roomDatabaseVersion}"
+
 }
 
 apply plugin: 'com.google.gms.google-services'
