@@ -3,10 +3,12 @@
     <string name="app_scheme">dc</string>
     <string name="app_login_host">login</string>
 
+    <!--Bottom Navigation-->
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
 
+    <!--Drawer Menu-->
     <string name="logout">Logout</string>
 
     <string name="email">Email</string>
@@ -14,12 +16,20 @@
     <string name="password">Password</string>
     <string name="access_token">AccessToken</string>
 
+    <!--Login Fragment-->
     <string name="basic_login">Basic Authentication</string>
     <string name="token_login">AccessToken Authentication</string>
     <string name="submit">Submit</string>
 
+    <!--Friend Status-->
+    <string name="my_contributions">My Contributions</string>
+    <string name="friend_contributions">Friend\'s Contributions</string>
+
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
+
+    <!--Image Descriptions-->
+    <string name="avatar_description">User AvatarImage</string>
 
     <!--Toast Messages-->
     <string name="empty_username_msg">Username cannot be blank</string>
