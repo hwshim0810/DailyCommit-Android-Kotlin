@@ -1,10 +1,14 @@
 package xyz.laziness.dailycommit.di.module
 
 import android.app.Application
+import android.arch.persistence.room.Room
 import android.content.Context
 import dagger.Module
 import dagger.Provides
 import io.reactivex.disposables.CompositeDisposable
+import xyz.laziness.dailycommit.data.database.DailyCommitDatabase
+import xyz.laziness.dailycommit.data.database.repository.friends.FriendRepo
+import xyz.laziness.dailycommit.data.database.repository.friends.FriendRepoImpl
 import xyz.laziness.dailycommit.data.network.github.GitHubApiHelper
 import xyz.laziness.dailycommit.data.network.github.GitHubApi
 import xyz.laziness.dailycommit.di.qualifiers.PreferenceInfo
@@ -39,5 +43,15 @@ class AppModule {
 
     @Provides
     internal fun provideSchedulerHelper(): SchedulerHelper = SchedulerHelper()
+
+    @Provides
+    @Singleton
+    internal fun provideAppDatabase(context: Context): DailyCommitDatabase =
+            Room.databaseBuilder(context, DailyCommitDatabase::class.java, AppConstants.APP_DB_NAME).build()
+
+    @Provides
+    @Singleton
+    internal fun provideFriendRepo(appDatabase: DailyCommitDatabase): FriendRepo =
+            FriendRepoImpl(appDatabase.friendsDao())
 
 }
