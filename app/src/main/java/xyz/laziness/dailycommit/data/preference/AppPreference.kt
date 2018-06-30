@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import xyz.laziness.dailycommit.di.qualifiers.PreferenceInfo
 import xyz.laziness.dailycommit.utils.AppConstants
+import xyz.laziness.dailycommit.utils.Colors
 import xyz.laziness.dailycommit.utils.extensions.edit
 import javax.inject.Inject
 
@@ -16,6 +17,7 @@ class AppPreference
         private const val PREF_KEY_LOGIN_METHOD = "PREF_KEY_LOGIN_METHOD"
         private const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
         private const val PREF_KEY_USER_NAME = "PREF_KEY_USER_NAME"
+        private const val PREF_KEY_BLOCK_COLOR = "PREF_KEY_BLOCK_COLOR"
     }
 
     private val prefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
@@ -35,4 +37,9 @@ class AppPreference
     override fun getCurrentUserName(): String = prefs.getString(PREF_KEY_USER_NAME, "")
 
     override fun setCurrentUserName(userName: String) = prefs.edit { putString(PREF_KEY_USER_NAME, userName) }
+
+    override fun setBaseBlockColor(colorKey: String) = prefs.edit { putString(PREF_KEY_BLOCK_COLOR, colorKey) }
+
+    override fun getBaseBlockColor(): String = prefs.getString(PREF_KEY_BLOCK_COLOR, Colors.DEFAULTS)
+
 }

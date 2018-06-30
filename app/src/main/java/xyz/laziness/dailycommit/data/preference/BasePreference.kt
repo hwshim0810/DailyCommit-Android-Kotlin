@@ -21,4 +21,8 @@ interface BasePreference {
 
     fun getCurrentUserName(): String
 
+    fun setBaseBlockColor(colorKey: String)
+
+    fun getBaseBlockColor(): String
+
 }
