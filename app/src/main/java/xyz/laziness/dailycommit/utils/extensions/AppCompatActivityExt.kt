@@ -14,6 +14,13 @@ fun AppCompatActivity.replaceFragmentInActivity(fragment: Fragment, @IdRes frame
     }
 }
 
+fun AppCompatActivity.replaceFragmentInActivity(fragment: Fragment, @IdRes frameId: Int, addStack: Boolean = true, tag: String) {
+    supportFragmentManager.transact {
+        replace(frameId, fragment, tag)
+        takeIf { addStack }?.apply { addToBackStack(null) }
+    }
+}
+
 fun AppCompatActivity.addFragmentInActivity(fragment: Fragment, @IdRes frameId: Int) {
     supportFragmentManager.transact {
         add(frameId, fragment)
