@@ -36,20 +36,29 @@ class FriendsStatusPresenterImpl<V: FriendsStatusView, I: FriendsStatusInteracto
                 it.loadFriends()
                         .compose(schedulerHelper.ioToMainObservableScheduler())
                         .flatMapIterable { it }
-                        .subscribe({
+                        .concatMap {
                             val friendName = it.friendName
                             interactor.doContributionRequest(friendName)
-                                    .subscribe({
-                                        getView()?.displayFriendContributions(it, friendName)
-                                    },{
-                                        this.onError()
-                                    })
-                        }, {
-                            this.onError()
-                        })
+                                    .compose(schedulerHelper.ioToMainSingleScheduler())
+                                    .toObservable()
+                                    .doOnNext { getView()?.displayFriendContributions(it, friendName) }
+                        }.subscribe({}, { this.onError() })
             )
         }
     }
 
+    override fun doFriendContributionRequest(friendName: String) {
+        interactor?.let {
+            compositeDisposable.add(
+                    it.doContributionRequest(friendName)
+                            .compose(schedulerHelper.ioToMainSingleScheduler())
+                            .subscribe({
+                                getView()?.displayFriendContributions(it, friendName)
+                            }, {
+                                this.onError()
+                            })
+            )
+        }
+    }
 
 }

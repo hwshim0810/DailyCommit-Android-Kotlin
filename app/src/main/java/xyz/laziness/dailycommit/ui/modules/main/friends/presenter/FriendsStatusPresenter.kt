@@ -11,4 +11,6 @@ interface FriendsStatusPresenter<V: FriendsStatusView, I: FriendsStatusInteracto
 
     fun doFriendsContributionRequest()
 
+    fun doFriendContributionRequest(friendName: String)
+
 }
