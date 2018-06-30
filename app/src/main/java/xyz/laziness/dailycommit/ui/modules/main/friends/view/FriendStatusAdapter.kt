@@ -1,7 +1,6 @@
 package xyz.laziness.dailycommit.ui.modules.main.friends.view
 
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,7 +11,8 @@ import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.data.network.github.data.ContributionDay
 
 
-class FriendStatusAdapter(private val daysListItems: MutableList<Pair<List<ContributionDay>, String>>)
+class FriendStatusAdapter(private val daysListItems: MutableList<Pair<List<ContributionDay>, String>>,
+                          private val friendNameIndexList: MutableList<String> = mutableListOf())
     : RecyclerView.Adapter<FriendStatusAdapter.FriendsStatusViewHolder>() {
 
     inner class FriendsStatusViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -30,7 +30,7 @@ class FriendStatusAdapter(private val daysListItems: MutableList<Pair<List<Contr
                         itemView.textViewFriendName.text = friendName
                     }
                     .subscribeOn(AndroidSchedulers.mainThread())
-                    .subscribe({}, { Log.d("EE", it.message)})
+                    .subscribe({}, {})
         }
 
     }
@@ -44,6 +44,10 @@ class FriendStatusAdapter(private val daysListItems: MutableList<Pair<List<Contr
 
     internal fun addContributionToList(contributions: List<ContributionDay>, friendName: String) {
         daysListItems.add(Pair(contributions, friendName))
+        friendNameIndexList.add(friendName)
         notifyItemChanged(itemCount)
     }
+
+    fun isFriendContain(friendName: String): Boolean = this.friendNameIndexList.contains(friendName)
+
 }
