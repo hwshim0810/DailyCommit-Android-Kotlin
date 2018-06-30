@@ -2,12 +2,19 @@ package xyz.laziness.dailycommit.ui.modules.main.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.annotation.StringRes
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
 import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AlertDialog
+import android.text.InputType
+import android.view.Menu
+import android.view.MenuItem
+import android.widget.EditText
+import android.widget.Toast
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -93,13 +100,13 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
 
     override fun openUserStatusFragment() {
         fragmentFrame as UserStatusFragment? ?: UserStatusFragment.getInstance().also {
-            replaceFragmentInActivity(it, R.id.contentFrame, false)
+            replaceFragmentInActivity(it, R.id.contentFrame, false, UserStatusFragment.TAG)
         }
     }
 
     override fun openFriendsStatusFragment() {
         fragmentFrame as FriendsStatusFragment? ?: FriendsStatusFragment.getInstance().also {
-            replaceFragmentInActivity(it, R.id.contentFrame, false)
+            replaceFragmentInActivity(it, R.id.contentFrame, false, FriendsStatusFragment.TAG)
         }
     }
 
@@ -116,6 +123,39 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
         }
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_items, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean =
+            item?.run {
+                when (item.itemId) {
+                    R.id.actionAddFriend -> {
+                        showAddFriendDialog()
+                        true
+                    }
+                    else -> super.onOptionsItemSelected(item)
+                }
+            } ?: false
+
+    override fun onResponseAddingFriend(friendName: String) {
+        if (fragmentFrame is FriendsStatusFragment) {
+            val fragmentFrame = fragmentFrame as FriendsStatusFragment
+
+            if (!fragmentFrame.friendStatusAdapter.isFriendContain(friendName)) {
+                fragmentFrame.presenter.doFriendContributionRequest(friendName)
+            }
+        }
+        showToastMessage(R.string.add_success_msg)
+    }
+
+    override fun showToastMessage(@StringRes message: Int) =
+            showToastMessage(getString(message))
+
+    override fun showToastMessage(message: String) =
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
     private fun setUpDrawer() {
         setSupportActionBar(toolbar)
         ActionBarDrawerToggle(this, drawerLayout, toolbar,
@@ -124,6 +164,21 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
             syncState()
         }
         drawerNavView.setNavigationItemSelectedListener(drawerNavItemSelectedListener)
+    }
+
+    private fun showAddFriendDialog() {
+        val editText = EditText(this).apply {
+            inputType = InputType.TYPE_CLASS_TEXT
+        }
+
+        AlertDialog.Builder(this)
+                .setTitle(getString(R.string.add_friend))
+                .setView(editText)
+                .setPositiveButton(getString(R.string.ok))
+                { _, _ -> presenter.onAddFriendDialogOkClick(editText.text.toString()) }
+                .setNegativeButton(getString(R.string.cancel))
+                { dialog, _ -> dialog.cancel() }
+                .show()
     }
 
 }
