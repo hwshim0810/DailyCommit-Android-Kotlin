@@ -92,7 +92,7 @@ dependencies {
     // RoomDatabase
     implementation "android.arch.persistence.room:runtime:${roomDatabaseVersion}"
     implementation "android.arch.persistence.room:rxjava2:${roomDatabaseVersion}"
-    annotationProcessor "android.arch.persistence.room:compiler:${roomDatabaseVersion}"
+    kapt "android.arch.persistence.room:compiler:${roomDatabaseVersion}"
 
 }
 
