@@ -7,6 +7,8 @@ import xyz.laziness.dailycommit.ui.modules.main.friends.view.FriendsStatusView
 
 interface FriendsStatusPresenter<V: FriendsStatusView, I: FriendsStatusInteractor> : BasePresenter<V, I> {
 
+    fun doMyContributionRequest()
 
+    fun doFriendsContributionRequest()
 
 }

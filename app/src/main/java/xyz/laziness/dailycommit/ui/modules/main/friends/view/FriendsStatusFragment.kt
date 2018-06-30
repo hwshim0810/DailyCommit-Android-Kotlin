@@ -1,10 +1,16 @@
 package xyz.laziness.dailycommit.ui.modules.main.friends.view
 
 import android.os.Bundle
+import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import kotlinx.android.synthetic.main.fragment_friends_status.*
 import xyz.laziness.dailycommit.R
+import xyz.laziness.dailycommit.data.network.github.data.ContributionDay
 import xyz.laziness.dailycommit.ui.base.view.BaseFragment
 import xyz.laziness.dailycommit.ui.modules.main.friends.interactor.FriendsStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.friends.presenter.FriendsStatusPresenter
@@ -23,6 +29,10 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
 
     @Inject
     internal lateinit var presenter: FriendsStatusPresenter<FriendsStatusView, FriendsStatusInteractor>
+    @Inject
+    internal lateinit var friendStatusAdapter: FriendStatusAdapter
+    @Inject
+    internal lateinit var friendStatusLayoutManager: LinearLayoutManager
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater.inflate(R.layout.fragment_friends_status, container, false)
@@ -33,6 +43,24 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
     }
 
     override fun initUI() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        friendStatusLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        recyclerFriendsStatus.layoutManager = friendStatusLayoutManager
+        recyclerFriendsStatus.adapter = friendStatusAdapter
+        recyclerFriendsStatus.itemAnimator = DefaultItemAnimator()
+        presenter.run {
+            doMyContributionRequest()
+            doFriendsContributionRequest()
+        }
+    }
+
+    override fun displayMyContributions(contributions: List<ContributionDay>) {
+        Observable.just(myContributionsView.onDrawCanvas(contributions))
+                .doOnNext { myContributionsView.takeIf { it != null }?.onDisplay() }
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .subscribe({}, { this.showErrorMessage() })
+    }
+
+    override fun displayFriendContributions(contributions: List<ContributionDay>, friendName: String) {
+        friendStatusAdapter.addContributionToList(contributions, friendName)
     }
 }

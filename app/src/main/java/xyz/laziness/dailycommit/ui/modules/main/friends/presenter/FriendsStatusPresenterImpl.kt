@@ -15,5 +15,41 @@ class FriendsStatusPresenterImpl<V: FriendsStatusView, I: FriendsStatusInteracto
         BasePresenterImpl<V, I>(interactor = interactor, schedulerHelper = schedulerHelper, compositeDisposable = disposable),
         FriendsStatusPresenter<V, I> {
 
+    override fun doMyContributionRequest() {
+        interactor?.let {
+            compositeDisposable.add(
+                    it.doMyContributionRequest()
+                            .compose(schedulerHelper.ioToMainSingleScheduler())
+                            .subscribe({
+                                getView()?.displayMyContributions(it)
+                            }, {
+                                this.onError()
+                            })
+            )
+        }
+    }
+
+    override fun doFriendsContributionRequest() {
+        val interactor = interactor
+        interactor?.let {
+            compositeDisposable.add(
+                it.loadFriends()
+                        .compose(schedulerHelper.ioToMainObservableScheduler())
+                        .flatMapIterable { it }
+                        .subscribe({
+                            val friendName = it.friendName
+                            interactor.doContributionRequest(friendName)
+                                    .subscribe({
+                                        getView()?.displayFriendContributions(it, friendName)
+                                    },{
+                                        this.onError()
+                                    })
+                        }, {
+                            this.onError()
+                        })
+            )
+        }
+    }
+
 
 }
