@@ -40,4 +40,12 @@ class GitHubApiHelper @Inject constructor() : GitHubApi {
                     Jsoup.connect(GitHubApiConstants.CONTRIBUTION_URL.format(userName))
                             .method(Connection.Method.GET)
             )
+
+    override fun doPublicUserInfoApiCall(userName: String): Observable<UserInfoResponse> =
+            Rx2AndroidNetworking.get(GitHubApiConstants.PUBLIC_USER_INFO_URL.format(userName))
+                    .setOkHttpClient(OkHttpClient.Builder()
+                            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                            .build())
+                    .build()
+                    .getObjectObservable(UserInfoResponse::class.java)
 }

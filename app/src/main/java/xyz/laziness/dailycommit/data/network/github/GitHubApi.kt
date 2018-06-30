@@ -14,4 +14,6 @@ interface GitHubApi {
 
     fun doContributionRequest(userName: String): Observable<Connection.Response>
 
+    fun doPublicUserInfoApiCall(userName: String): Observable<UserInfoResponse>
+
 }

@@ -13,6 +13,7 @@ object GitHubApiConstants {
 
     const val REST_LOGIN_URL = "$REST_URL/authorizations"
     const val USER_INFO_URL = "$REST_URL/user"
+    const val PUBLIC_USER_INFO_URL = "$REST_URL/users/%s"
     const val CONTRIBUTION_URL = "$BASE_URL/users/%s/contributions"
 
     const val REQUST_SCOPE = "user repo"
