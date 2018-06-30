@@ -16,6 +16,15 @@
     <string name="password">Password</string>
     <string name="access_token">AccessToken</string>
 
+    <!--Toolbar Menu-->
+    <string name="add_friend">Add Friend</string>
+
+    <!--Dialog-->
+    <string name="ok">OK</string>
+    <string name="cancel">@android:string/cancel</string>
+    <string name="add_success_msg">Successfully Add</string>
+    <string name="user_add_fail_msg">I\'m my eternal friend</string>
+
     <!--Login Fragment-->
     <string name="basic_login">Basic Authentication</string>
     <string name="token_login">AccessToken Authentication</string>
