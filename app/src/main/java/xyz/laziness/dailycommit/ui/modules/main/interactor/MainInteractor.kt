@@ -11,4 +11,6 @@ interface MainInteractor : BaseInteractor {
 
     fun removeUserInfoInPreference()
 
+    fun doPublicUserInfoApiCall(friendName: String): Observable<Boolean>
+
 }
