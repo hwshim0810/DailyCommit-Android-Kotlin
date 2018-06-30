@@ -17,6 +17,7 @@ object AppConstants {
     }
 
     internal const val PREF_NAME = "daily_pref"
+    internal const val APP_DB_NAME = "daily_db"
 
     /**
      * Message Codes
@@ -25,6 +26,7 @@ object AppConstants {
     internal const val INVALID_EMAIL_ERROR = 11
     internal const val EMPTY_SECRET_ERROR = 12
     internal const val LOGIN_FAILURE_ERROR = 13
+    internal const val RX_ON_ERROR = 14
 
     internal const val BACK_BTN_SUCCESS = 100
     internal const val BACK_BTN_ERROR = 101

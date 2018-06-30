@@ -12,7 +12,7 @@ interface FriendDao {
     @Delete
     fun deleteFriend(friend: Friend)
 
-    @Query("SELECT * FROM friends WHERE user_name = :userName")
+    @Query("SELECT * FROM friends WHERE user_name = :userName ORDER BY id desc")
     fun loadAllFriendsByUsername(userName: String): List<Friend>
 
 }
