@@ -3,6 +3,8 @@ package xyz.laziness.dailycommit.ui.modules.main.presenter
 import com.androidnetworking.error.ANError
 import io.reactivex.Observable
 import io.reactivex.disposables.CompositeDisposable
+import xyz.laziness.dailycommit.R
+import xyz.laziness.dailycommit.data.network.github.response.ErrorResponse
 import xyz.laziness.dailycommit.ui.base.presenter.BasePresenterImpl
 import xyz.laziness.dailycommit.ui.modules.main.interactor.MainInteractor
 import xyz.laziness.dailycommit.ui.modules.main.view.MainView
@@ -60,4 +62,23 @@ class MainPresenterImpl<V: MainView, I: MainInteractor>
         }
     }
 
+    override fun onAddFriendDialogOkClick(friendName: String) {
+        interactor?.let {
+            compositeDisposable.add(
+                    it.doPublicUserInfoApiCall(friendName)
+                            .compose(schedulerHelper.ioToMainObservableScheduler())
+                            .subscribe({
+                                if (it) getView()?.onResponseAddingFriend(friendName)
+                                else getView()?.showToastMessage(R.string.user_add_fail_msg)
+                            }, {
+                                it as ANError
+                                if (it.errorCode != 0)
+                                    getView()?.showToastMessage(it.getErrorAsObject(ErrorResponse::class.java).message)
+                                else
+                                    this.onError()
+                            })
+            )
+        }
+
+    }
 }

@@ -13,4 +13,6 @@ interface MainPresenter<V: MainView, I: MainInteractor> : BasePresenter<V, I> {
 
     fun setUserStatusDisplay(): Unit?
 
+    fun onAddFriendDialogOkClick(friendName: String)
+
 }
