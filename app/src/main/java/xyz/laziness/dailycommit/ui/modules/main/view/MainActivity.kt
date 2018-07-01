@@ -41,8 +41,6 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     @Inject
     internal lateinit var fragmentDispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
 
-    private val fragmentFrame: Fragment by lazy { supportFragmentManager.findFragmentById(R.id.contentFrame) }
-
     var userInfo: UserInfoResponse? = null
 
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
@@ -99,14 +97,18 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     }
 
     override fun openUserStatusFragment() {
-        fragmentFrame as UserStatusFragment? ?: UserStatusFragment.getInstance().also {
-            replaceFragmentInActivity(it, R.id.contentFrame, false, UserStatusFragment.TAG)
+        if (!isEqualFragmentByTag(R.id.contentFrame, UserStatusFragment.TAG)) {
+            UserStatusFragment.getInstance().also {
+                replaceFragmentInActivity(it, R.id.contentFrame, false, UserStatusFragment.TAG)
+            }
         }
     }
 
     override fun openFriendsStatusFragment() {
-        fragmentFrame as FriendsStatusFragment? ?: FriendsStatusFragment.getInstance().also {
-            replaceFragmentInActivity(it, R.id.contentFrame, false, FriendsStatusFragment.TAG)
+        if (!isEqualFragmentByTag(R.id.contentFrame, FriendsStatusFragment.TAG)) {
+            FriendsStatusFragment.getInstance().also {
+                replaceFragmentInActivity(it, R.id.contentFrame, false, FriendsStatusFragment.TAG)
+            }
         }
     }
 
@@ -140,8 +142,8 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
             } ?: false
 
     override fun onResponseAddingFriend(friendName: String) {
-        if (fragmentFrame is FriendsStatusFragment) {
-            val fragmentFrame = fragmentFrame as FriendsStatusFragment
+        if (isEqualFragmentByTag(R.id.contentFrame, FriendsStatusFragment.TAG)) {
+            val fragmentFrame = supportFragmentManager.findFragmentByTag(FriendsStatusFragment.TAG) as FriendsStatusFragment
 
             if (!fragmentFrame.friendStatusAdapter.isFriendContain(friendName)) {
                 fragmentFrame.presenter.doFriendContributionRequest(friendName)
@@ -172,7 +174,8 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
         }
 
         AlertDialog.Builder(this)
-                .setTitle(getString(R.string.add_friend))
+                .setTitle(R.string.add_friend)
+                .setCancelable(true)
                 .setView(editText)
                 .setPositiveButton(getString(R.string.ok))
                 { _, _ -> presenter.onAddFriendDialogOkClick(editText.text.toString()) }
