@@ -24,6 +24,8 @@
     <string name="cancel">@android:string/cancel</string>
     <string name="add_success_msg">Successfully Add</string>
     <string name="user_add_fail_msg">I\'m my eternal friend</string>
+    <string name="remove_friend">Remove Friend</string>
+    <string name="confirm_remove_msg">Remove friend from list?</string>
 
     <!--Login Fragment-->
     <string name="basic_login">Basic Authentication</string>
