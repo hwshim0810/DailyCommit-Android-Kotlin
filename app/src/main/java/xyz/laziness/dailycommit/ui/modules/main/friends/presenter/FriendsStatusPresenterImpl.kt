@@ -1,6 +1,7 @@
 package xyz.laziness.dailycommit.ui.modules.main.friends.presenter
 
 import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.schedulers.Schedulers
 import xyz.laziness.dailycommit.ui.base.presenter.BasePresenterImpl
 import xyz.laziness.dailycommit.ui.modules.main.friends.interactor.FriendsStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.friends.view.FriendsStatusView
@@ -61,4 +62,22 @@ class FriendsStatusPresenterImpl<V: FriendsStatusView, I: FriendsStatusInteracto
         }
     }
 
+    override fun onFriendDeleteButtonClicked(friendName: String, pos: Int) {
+        val interactor = interactor
+        interactor?.let {
+            compositeDisposable.add(
+                    it.loadFriendByName(friendName)
+                            .subscribeOn(Schedulers.io())
+                            .flatMap {
+                                interactor.deleteFriend(it)
+                                        .compose(schedulerHelper.ioToMainObservableScheduler())
+                            }
+                            .subscribe({
+                                getView()?.onResponseDeleteFriend(it, pos)
+                            }, {
+                                this.onError()
+                            })
+            )
+        }
+    }
 }

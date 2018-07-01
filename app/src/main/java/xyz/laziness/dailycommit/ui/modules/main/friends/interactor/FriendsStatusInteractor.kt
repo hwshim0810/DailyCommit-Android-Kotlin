@@ -15,4 +15,8 @@ interface FriendsStatusInteractor : BaseInteractor {
 
     fun loadFriends(): Observable<List<Friend>>
 
+    fun loadFriendByName(friendName: String): Observable<Friend>
+
+    fun deleteFriend(friend: Friend): Observable<Boolean>
+
 }

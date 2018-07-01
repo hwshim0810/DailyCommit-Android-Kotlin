@@ -10,4 +10,6 @@ interface FriendsStatusView : BaseView {
 
     fun displayFriendContributions(contributions: List<ContributionDay>, friendName: String): Unit?
 
+    fun onResponseDeleteFriend(isSuccess: Boolean, pos: Int)
+
 }

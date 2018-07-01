@@ -50,4 +50,13 @@ class FriendStatusAdapter(private val daysListItems: MutableList<Pair<List<Contr
 
     fun isFriendContain(friendName: String): Boolean = this.friendNameIndexList.contains(friendName)
 
+    fun getFriendName(pos: Int): String = this.friendNameIndexList[pos]
+
+    fun removeFriend(pos: Int) {
+        this.daysListItems.removeAt(pos)
+        this.friendNameIndexList.removeAt(pos)
+        notifyItemRemoved(pos)
+        notifyItemRangeChanged(pos, itemCount)
+    }
+
 }

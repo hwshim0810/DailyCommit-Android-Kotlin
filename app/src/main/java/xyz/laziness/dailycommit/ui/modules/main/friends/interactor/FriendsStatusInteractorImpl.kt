@@ -35,4 +35,9 @@ class FriendsStatusInteractorImpl
     override fun loadFriends(): Observable<List<Friend>> =
             friendRepo.loadFriends(appPreference.getCurrentUserName())
 
+    override fun loadFriendByName(friendName: String): Observable<Friend> =
+            friendRepo.loadFriendByName(appPreference.getCurrentUserName(), friendName)
+
+    override fun deleteFriend(friend: Friend): Observable<Boolean> =
+            friendRepo.deleteFriend(friend)
 }

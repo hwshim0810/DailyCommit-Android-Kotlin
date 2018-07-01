@@ -13,4 +13,6 @@ interface FriendsStatusPresenter<V: FriendsStatusView, I: FriendsStatusInteracto
 
     fun doFriendContributionRequest(friendName: String)
 
+    fun onFriendDeleteButtonClicked(friendName: String, pos: Int)
+
 }

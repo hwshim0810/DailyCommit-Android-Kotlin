@@ -2,7 +2,10 @@ package xyz.laziness.dailycommit.ui.modules.main.friends.view
 
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.helper.ItemTouchHelper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -12,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_friends_status.*
 import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.data.network.github.data.ContributionDay
 import xyz.laziness.dailycommit.ui.base.view.BaseFragment
+import xyz.laziness.dailycommit.ui.custom.swipe.SwipeController
 import xyz.laziness.dailycommit.ui.modules.main.friends.interactor.FriendsStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.friends.presenter.FriendsStatusPresenter
 import javax.inject.Inject
@@ -43,10 +47,8 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
     }
 
     override fun initUI() {
-        friendStatusLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        recyclerFriendsStatus.layoutManager = friendStatusLayoutManager
-        recyclerFriendsStatus.adapter = friendStatusAdapter
-        recyclerFriendsStatus.itemAnimator = DefaultItemAnimator()
+        initFriendsStatusRecyclerView()
+
         presenter.run {
             doMyContributionRequest()
             doFriendsContributionRequest()
@@ -62,5 +64,30 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
 
     override fun displayFriendContributions(contributions: List<ContributionDay>, friendName: String) {
         friendStatusAdapter.addContributionToList(contributions, friendName)
+    }
+
+    override fun onResponseDeleteFriend(isSuccess: Boolean, pos: Int) {
+        if (isSuccess) friendStatusAdapter.removeFriend(pos)
+    }
+
+    private fun initFriendsStatusRecyclerView() {
+        friendStatusLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        recyclerFriendsStatus.layoutManager = friendStatusLayoutManager
+        recyclerFriendsStatus.adapter = friendStatusAdapter
+        recyclerFriendsStatus.itemAnimator = DefaultItemAnimator()
+        recyclerFriendsStatus.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+
+        context?.run {
+            val swipeController = object : SwipeController(this) {
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val adapter = recyclerFriendsStatus.adapter as FriendStatusAdapter
+                    presenter.onFriendDeleteButtonClicked(adapter.getFriendName(viewHolder.adapterPosition), viewHolder.adapterPosition)
+                }
+            }
+
+            val itemTouchHelper = ItemTouchHelper(swipeController)
+            itemTouchHelper.attachToRecyclerView(recyclerFriendsStatus)
+        }
+
     }
 }
