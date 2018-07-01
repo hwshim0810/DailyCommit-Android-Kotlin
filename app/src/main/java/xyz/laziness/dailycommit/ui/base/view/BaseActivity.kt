@@ -1,6 +1,7 @@
 package xyz.laziness.dailycommit.ui.base.view
 
 import android.os.Bundle
+import android.support.annotation.IdRes
 import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import dagger.android.AndroidInjection
@@ -32,6 +33,9 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
     override fun showErrorMessage() = Toast.makeText(this, getString(R.string.unknown_error_msg), Toast.LENGTH_SHORT).show()
 
     override fun finishView() = finish()
+
+    override fun isEqualFragmentByTag(@IdRes fragmentFrame: Int, tag: String): Boolean =
+            supportFragmentManager.findFragmentById(fragmentFrame)?.tag == tag
 
     fun superOnBackPressed() = super.onBackPressed()
 

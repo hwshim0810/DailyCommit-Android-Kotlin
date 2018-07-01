@@ -1,5 +1,7 @@
 package xyz.laziness.dailycommit.ui.base.view
 
+import android.support.annotation.IdRes
+
 
 interface BaseView {
 
@@ -8,5 +10,7 @@ interface BaseView {
     fun showErrorMessage()
 
     fun finishView()
+
+    fun isEqualFragmentByTag(@IdRes fragmentFrame: Int, tag: String): Boolean
 
 }

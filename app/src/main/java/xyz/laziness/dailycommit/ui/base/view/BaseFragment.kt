@@ -2,6 +2,7 @@ package xyz.laziness.dailycommit.ui.base.view
 
 import android.content.Context
 import android.os.Bundle
+import android.support.annotation.IdRes
 import android.support.v4.app.Fragment
 import android.view.View
 import dagger.android.support.AndroidSupportInjection
@@ -39,4 +40,6 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     override fun finishView() = getBaseActivity().finishView()
 
+    override fun isEqualFragmentByTag(@IdRes fragmentFrame: Int, tag: String): Boolean =
+            parentActivity.isEqualFragmentByTag(fragmentFrame, tag)
 }
