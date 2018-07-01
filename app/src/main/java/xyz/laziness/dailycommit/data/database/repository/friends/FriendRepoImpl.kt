@@ -18,4 +18,7 @@ class FriendRepoImpl @Inject constructor(private val friendDao: FriendDao) : Fri
 
     override fun loadFriends(userName: String): Observable<List<Friend>> =
             Observable.fromCallable { friendDao.loadAllFriendsByUsername(userName) }
+
+    override fun loadFriendByName(userName: String, friendName: String): Observable<Friend> =
+            Observable.fromCallable { friendDao.loadFriendByName(userName, friendName) }
 }

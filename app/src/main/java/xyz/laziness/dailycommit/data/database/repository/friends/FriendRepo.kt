@@ -11,4 +11,6 @@ interface FriendRepo {
 
     fun loadFriends(userName: String): Observable<List<Friend>>
 
+    fun loadFriendByName(userName: String, friendName: String): Observable<Friend>
+
 }
