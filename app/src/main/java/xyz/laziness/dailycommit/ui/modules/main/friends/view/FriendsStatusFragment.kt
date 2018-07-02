@@ -56,6 +56,8 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
     }
 
     override fun displayMyContributions(contributions: List<ContributionDay>) {
+        if (myContributionsView == null) return
+
         Observable.just(myContributionsView.onDrawCanvas(contributions))
                 .doOnNext { myContributionsView.takeIf { it != null }?.onDisplay() }
                 .subscribeOn(AndroidSchedulers.mainThread())
