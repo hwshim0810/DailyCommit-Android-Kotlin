@@ -2,6 +2,7 @@ package xyz.laziness.dailycommit.ui.modules.main.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.annotation.IdRes
 import android.support.annotation.StringRes
 import android.support.design.widget.BottomNavigationView
 import android.support.design.widget.NavigationView
@@ -28,9 +29,11 @@ import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
 import xyz.laziness.dailycommit.ui.modules.main.friends.view.FriendsStatusFragment
 import xyz.laziness.dailycommit.ui.modules.main.interactor.MainInteractor
 import xyz.laziness.dailycommit.ui.modules.main.presenter.MainPresenter
+import xyz.laziness.dailycommit.ui.modules.main.settings.view.AppSettingPrefCompat
 import xyz.laziness.dailycommit.ui.modules.main.user.view.UserStatusFragment
 import xyz.laziness.dailycommit.utils.extensions.loadImage
 import xyz.laziness.dailycommit.utils.extensions.replaceFragmentInActivity
+import java.util.*
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
@@ -43,19 +46,32 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
 
     var userInfo: UserInfoResponse? = null
 
+    private val fragmentDeque: ArrayDeque<Int> = ArrayDeque()
+    private var isBackPressed = false
+
     override fun supportFragmentInjector(): AndroidInjector<Fragment> = fragmentDispatchingAndroidInjector
 
     private val bottomNavItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.navigation_user -> {
+                if (!isBackPressed) pushFragmentDeque(R.id.navigation_user)
+
+                isBackPressed = false
                 openUserStatusFragment()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_friends -> {
+                if (!isBackPressed) pushFragmentDeque(R.id.navigation_friends)
+
+                isBackPressed = false
                 openFriendsStatusFragment()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.navigation_settings -> {
+                if (!isBackPressed) pushFragmentDeque(R.id.navigation_settings)
+
+                isBackPressed = false
+                openAppSettingFragment()
                 return@OnNavigationItemSelectedListener true
             }
         }
@@ -79,6 +95,7 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
 
         presenter.onAttach(this)
         bottomNavView.setOnNavigationItemSelectedListener(bottomNavItemSelectedListener)
+        pushFragmentDeque(R.id.navigation_user)
     }
 
     override fun onDestroy() {
@@ -87,8 +104,13 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     }
 
     override fun onViewBackPressed() {
-        if (supportFragmentManager.backStackEntryCount > 0) super.superOnBackPressed()
-        else presenter.onBackPressed()
+        if (fragmentDeque.size > 1) {
+            isBackPressed = true
+            fragmentDeque.pop()
+            bottomNavView.selectedItemId = fragmentDeque.peek()
+        } else {
+            presenter.onBackPressed()
+        }
     }
 
     override fun startLoginActivity() = Intent(this, LoginActivity::class.java).run {
@@ -99,7 +121,7 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     override fun openUserStatusFragment() {
         if (!isEqualFragmentByTag(R.id.contentFrame, UserStatusFragment.TAG)) {
             UserStatusFragment.getInstance().also {
-                replaceFragmentInActivity(it, R.id.contentFrame, false, UserStatusFragment.TAG)
+                replaceFragmentInActivity(it, R.id.contentFrame, true, UserStatusFragment.TAG)
             }
         }
     }
@@ -107,7 +129,15 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     override fun openFriendsStatusFragment() {
         if (!isEqualFragmentByTag(R.id.contentFrame, FriendsStatusFragment.TAG)) {
             FriendsStatusFragment.getInstance().also {
-                replaceFragmentInActivity(it, R.id.contentFrame, false, FriendsStatusFragment.TAG)
+                replaceFragmentInActivity(it, R.id.contentFrame, true, FriendsStatusFragment.TAG)
+            }
+        }
+    }
+
+    override fun openAppSettingFragment() {
+        if (!isEqualFragmentByTag(R.id.contentFrame, AppSettingPrefCompat.TAG)) {
+            AppSettingPrefCompat.getInstance().also {
+                replaceFragmentInActivity(it, R.id.contentFrame, true, AppSettingPrefCompat.TAG)
             }
         }
     }
@@ -182,6 +212,15 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
                 .setNegativeButton(getString(R.string.cancel))
                 { dialog, _ -> dialog.cancel() }
                 .show()
+    }
+
+    private fun pushFragmentDeque(@IdRes id: Int) {
+        if (fragmentDeque.size < 3)
+            fragmentDeque.push(id)
+        else {
+            fragmentDeque.removeLast()
+            fragmentDeque.push(id)
+        }
     }
 
 }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/pref_theme">
+
+        <ListPreference
+            android:key="PREF_KEY_BLOCK_COLOR"
+            android:title="@string/item_block_color"
+            android:summary=""
+            android:entries="@array/block_color"
+            android:entryValues="@array/block_color" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

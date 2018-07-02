@@ -13,6 +13,8 @@ interface MainView : BaseView {
 
     fun openFriendsStatusFragment()
 
+    fun openAppSettingFragment()
+
     fun setViewData(userInfoResponse: UserInfoResponse)
 
     fun lockDrawer(): Unit?
