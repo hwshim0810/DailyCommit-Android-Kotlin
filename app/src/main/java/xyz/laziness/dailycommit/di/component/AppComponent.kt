@@ -6,12 +6,13 @@ import dagger.Component
 import dagger.android.AndroidInjectionModule
 import xyz.laziness.dailycommit.DailyCommitApplication
 import xyz.laziness.dailycommit.di.builder.ActivityBuilder
+import xyz.laziness.dailycommit.di.builder.WidgetBuilder
 import xyz.laziness.dailycommit.di.module.AppModule
 import javax.inject.Singleton
 
 
 @Singleton
-@Component(modules = [(AndroidInjectionModule::class), (AppModule::class), (ActivityBuilder::class)])
+@Component(modules = [(AndroidInjectionModule::class), (AppModule::class), (ActivityBuilder::class), (WidgetBuilder::class)])
 interface AppComponent {
 
     @Component.Builder
