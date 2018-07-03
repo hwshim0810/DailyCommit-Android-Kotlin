@@ -27,10 +27,6 @@ class FriendsStatusInteractorImpl
 
     override fun doContributionRequest(userName: String): Single<List<ContributionDay>> =
         apiHelper.doContributionRequest(userName)
-                .flatMapIterable { it.parse().select(ContributionParser.targetElement) }
-                .filter { ContributionParser.hasAttributes(it) }
-                .map { ContributionParser.parse(it) }
-                .toList()
 
     override fun loadFriends(): Observable<List<Friend>> =
             friendRepo.loadFriends(appPreference.getCurrentUserName())
