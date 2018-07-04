@@ -57,7 +57,10 @@ class LoginInputFragment : BaseFragment(), LoginInputView {
 
     override fun startMainActivity() {
         val activity = getBaseActivity() as LoginActivity
-        activity.startMainActivity()
+        activity.run{
+            sendLoginBroadCast()
+            startMainActivity()
+        }
     }
 
     fun setBundle(bundle: Bundle) { arguments = bundle }

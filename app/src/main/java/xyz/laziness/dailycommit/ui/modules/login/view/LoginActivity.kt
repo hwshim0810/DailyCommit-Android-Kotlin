@@ -1,5 +1,6 @@
 package xyz.laziness.dailycommit.ui.modules.login.view
 
+import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -17,6 +18,7 @@ import xyz.laziness.dailycommit.utils.AppConstants
 import xyz.laziness.dailycommit.utils.BundleConstants
 import xyz.laziness.dailycommit.utils.extensions.replaceFragmentInActivity
 import xyz.laziness.dailycommit.utils.wraaper.Bundler
+import xyz.laziness.dailycommit.widget.receiver.WidgetReceiver
 import javax.inject.Inject
 
 
@@ -84,6 +86,13 @@ class LoginActivity : BaseActivity(), LoginView, HasSupportFragmentInjector {
     override fun onViewBackPressed() {
         if (supportFragmentManager.backStackEntryCount > 0) super.superOnBackPressed()
         else presenter.onBackPressed()
+    }
+
+    override fun sendLoginBroadCast() {
+        val intent = Intent(this, WidgetReceiver::class.java).apply {
+            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        }
+        sendBroadcast(intent)
     }
 
 }

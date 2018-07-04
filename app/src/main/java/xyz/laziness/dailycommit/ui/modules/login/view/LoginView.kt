@@ -18,4 +18,6 @@ interface LoginView : BaseView {
 
     fun startMainActivity()
 
+    fun sendLoginBroadCast()
+
 }
