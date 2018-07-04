@@ -27,6 +27,6 @@ interface MainView : BaseView {
 
     fun showToastMessage(message: String)
 
-    fun sendLoginBroadCast(state: Boolean)
+    fun sendLogoutBroadCast(state: Boolean)
 
 }

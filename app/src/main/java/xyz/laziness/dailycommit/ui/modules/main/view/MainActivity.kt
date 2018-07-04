@@ -191,7 +191,7 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     override fun showToastMessage(message: String) =
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
-    override fun sendLoginBroadCast(state: Boolean) {
+    override fun sendLogoutBroadCast(state: Boolean) {
         val intent = Intent(this, WidgetReceiver::class.java).apply {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         }

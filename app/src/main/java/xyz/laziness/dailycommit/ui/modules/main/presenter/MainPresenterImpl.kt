@@ -57,7 +57,7 @@ class MainPresenterImpl<V: MainView, I: MainInteractor>
                     .subscribe(
                         {
                             getView()?.run {
-                                sendLoginBroadCast(false)
+                                sendLogoutBroadCast(false)
                                 startLoginActivity()
                             }
                         },
