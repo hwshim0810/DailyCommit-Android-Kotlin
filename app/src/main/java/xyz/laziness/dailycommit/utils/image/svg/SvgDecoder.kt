@@ -1,4 +1,4 @@
-package xyz.laziness.dailycommit.utils.image
+package xyz.laziness.dailycommit.utils.image.svg
 
 import com.bumptech.glide.load.ResourceDecoder
 import com.bumptech.glide.load.engine.Resource
