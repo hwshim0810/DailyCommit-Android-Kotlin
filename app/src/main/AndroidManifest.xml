@@ -42,6 +42,7 @@
         </activity>
         
         <receiver
+            android:label="@string/normal_graph_label"
             android:name=".widget.receiver.WidgetReceiver"
             android:enabled="true"
             android:exported="true">

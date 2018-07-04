@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--(N * 70dp)-30dp::Cell-->
 <appwidget-provider
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:minWidth="150dp"
-    android:minHeight="20dp"
+    android:minWidth="250dp"
+    android:minHeight="40dp"
     android:updatePeriodMillis="3600000"
+    android:previewImage="@drawable/img_preview_graph"
+    android:resizeMode="horizontal"
     android:initialLayout="@layout/widget_contribution" />
