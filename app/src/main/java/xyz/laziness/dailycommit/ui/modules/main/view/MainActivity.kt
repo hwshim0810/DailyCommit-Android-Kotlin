@@ -1,5 +1,6 @@
 package xyz.laziness.dailycommit.ui.modules.main.view
 
+import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
 import android.support.annotation.IdRes
@@ -31,8 +32,10 @@ import xyz.laziness.dailycommit.ui.modules.main.interactor.MainInteractor
 import xyz.laziness.dailycommit.ui.modules.main.presenter.MainPresenter
 import xyz.laziness.dailycommit.ui.modules.main.settings.view.AppSettingPrefCompat
 import xyz.laziness.dailycommit.ui.modules.main.user.view.UserStatusFragment
+import xyz.laziness.dailycommit.utils.AppConstants
 import xyz.laziness.dailycommit.utils.extensions.loadImage
 import xyz.laziness.dailycommit.utils.extensions.replaceFragmentInActivity
+import xyz.laziness.dailycommit.widget.receiver.WidgetReceiver
 import java.util.*
 import javax.inject.Inject
 
@@ -187,6 +190,13 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
 
     override fun showToastMessage(message: String) =
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+
+    override fun sendLoginBroadCast(state: Boolean) {
+        val intent = Intent(this, WidgetReceiver::class.java).apply {
+            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        }
+        sendBroadcast(intent)
+    }
 
     private fun setUpDrawer() {
         setSupportActionBar(toolbar)

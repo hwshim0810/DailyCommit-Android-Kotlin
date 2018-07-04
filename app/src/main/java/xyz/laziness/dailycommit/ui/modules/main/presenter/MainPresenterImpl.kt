@@ -55,7 +55,12 @@ class MainPresenterImpl<V: MainView, I: MainInteractor>
                     }
                     .compose(schedulerHelper.ioToMainObservableScheduler())
                     .subscribe(
-                        { getView()?.startLoginActivity() },
+                        {
+                            getView()?.run {
+                                sendLoginBroadCast(false)
+                                startLoginActivity()
+                            }
+                        },
                         { getView()?.showErrorMessage() }
                     )
             )
