@@ -1,7 +1,8 @@
 package xyz.laziness.dailycommit.data.network.github
 
 import io.reactivex.Observable
-import org.jsoup.Connection
+import io.reactivex.Single
+import xyz.laziness.dailycommit.data.network.github.data.ContributionDay
 import xyz.laziness.dailycommit.data.network.github.response.LoginResponse
 import xyz.laziness.dailycommit.data.network.github.response.UserInfoResponse
 
@@ -12,7 +13,7 @@ interface GitHubApi {
 
     fun doUserInfoApiCall(token: String): Observable<UserInfoResponse>
 
-    fun doContributionRequest(userName: String): Observable<Connection.Response>
+    fun doContributionRequest(userName: String): Single<List<ContributionDay>>
 
     fun doPublicUserInfoApiCall(userName: String): Observable<UserInfoResponse>
 
