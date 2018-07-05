@@ -4,13 +4,13 @@ package xyz.laziness.dailycommit.utils
 object Colors {
 
     const val DEFAULTS = "DEFAULTS"
-    const val CLASSIC = "CLASSIC"
-    const val OKINAWA_BLUE = "OKINAWA BLUE"
-    const val VELVET = "VELVET"
-    const val BLOOD_ORANGE = "BLOOD ORANGE"
-    const val DEEP_DARK = "DEEP DARK"
+    private const val CLASSIC = "CLASSIC"
+    private const val OKINAWA_BLUE = "OKINAWA BLUE"
+    private const val VELVET = "VELVET"
+    private const val BLOOD_ORANGE = "BLOOD ORANGE"
+    private const val DEEP_DARK = "DEEP DARK"
 
-    const val ZERO_COLOR = "#EBEDF0"
+    private const val ZERO_COLOR = "#EBEDF0"
 
     val baseColors = hashMapOf(
             DEFAULTS to listOfNotNull(ZERO_COLOR, "#239A3B", "#C6E48B", "7BC96F", "#196127"),
