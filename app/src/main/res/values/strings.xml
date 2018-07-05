@@ -41,6 +41,13 @@
 
     <!--Image Descriptions-->
     <string name="avatar_description">User AvatarImage</string>
+    <string name="graph_widget_description">User Contribution graph</string>
+    <string name="login_widget_image_description">Login Widget background</string>
+
+    <!--Widget-->
+    <string name="login">LOGIN</string>
+    <string name="login_required_msg">Login to DailyCommit!</string>
+    <string name="normal_graph_label">GITHUB GRAPH</string>
 
     <!--Toast Messages-->
     <string name="empty_username_msg">Username cannot be blank</string>
@@ -57,7 +64,10 @@
     <string name="item_block_color">Graph BlockColor</string>
     <string-array name="block_color">
         <item>DEFAULTS</item>
-        <item>BLUE</item>
+        <item>CLASSIC</item>
+        <item>OKINAWA BLUE</item>
+        <item>BROWNIE</item>
+        <item>BLOOD ORANGE</item>
     </string-array>
 
 </resources>
