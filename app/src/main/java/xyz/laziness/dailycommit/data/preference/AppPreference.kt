@@ -13,11 +13,11 @@ class AppPreference
     @Inject constructor(context: Context, @PreferenceInfo private val prefFileName: String) : BasePreference {
 
     companion object {
-        private const val PREF_KEY_LOGIN_STATE = "PREF_KEY_LOGIN_STATE"
-        private const val PREF_KEY_LOGIN_METHOD = "PREF_KEY_LOGIN_METHOD"
-        private const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
-        private const val PREF_KEY_USER_NAME = "PREF_KEY_USER_NAME"
-        private const val PREF_KEY_BLOCK_COLOR = "PREF_KEY_BLOCK_COLOR"
+        const val PREF_KEY_LOGIN_STATE = "PREF_KEY_LOGIN_STATE"
+        const val PREF_KEY_LOGIN_METHOD = "PREF_KEY_LOGIN_METHOD"
+        const val PREF_KEY_ACCESS_TOKEN = "PREF_KEY_ACCESS_TOKEN"
+        const val PREF_KEY_USER_NAME = "PREF_KEY_USER_NAME"
+        const val PREF_KEY_BLOCK_COLOR = "PREF_KEY_BLOCK_COLOR"
     }
 
     private val prefs: SharedPreferences = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
