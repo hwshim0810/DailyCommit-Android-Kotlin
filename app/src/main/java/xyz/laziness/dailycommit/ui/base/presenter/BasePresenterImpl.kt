@@ -1,5 +1,6 @@
 package xyz.laziness.dailycommit.ui.base.presenter
 
+import android.support.annotation.StringRes
 import io.reactivex.BackpressureStrategy
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.subjects.BehaviorSubject
@@ -46,6 +47,6 @@ abstract class BasePresenterImpl<V: BaseView, I: BaseInteractor>
 
     override fun onBackPressed() = backButtonSubject.onNext(System.currentTimeMillis())
 
-    override fun onError() = getView()?.showErrorMessage()
+    override fun onError(@StringRes resId: Int) = getView()?.showErrorMessage(resId)
 
 }

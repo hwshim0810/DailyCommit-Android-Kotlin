@@ -3,9 +3,11 @@ package xyz.laziness.dailycommit.ui.base.view
 import android.content.Context
 import android.os.Bundle
 import android.support.annotation.IdRes
+import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.view.View
 import dagger.android.support.AndroidSupportInjection
+import xyz.laziness.dailycommit.R
 
 
 abstract class BaseFragment : Fragment(), BaseView {
@@ -36,7 +38,7 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     override fun showBackButtonToast(backMessageCode: Int) = getBaseActivity().showBackButtonToast(backMessageCode)
 
-    override fun showErrorMessage() = getBaseActivity().showErrorMessage()
+    override fun showErrorMessage(@StringRes resId: Int) = getBaseActivity().showErrorMessage(resId)
 
     override fun finishView() = getBaseActivity().finishView()
 
