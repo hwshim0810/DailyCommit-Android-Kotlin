@@ -1,12 +1,13 @@
 package xyz.laziness.dailycommit.ui.modules.main.settings.view
 
+import android.content.Context
 import android.os.Bundle
 import android.support.v7.preference.ListPreference
 import android.support.v7.preference.PreferenceFragmentCompat
-import android.support.v7.preference.PreferenceManager
 import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.data.preference.AppPreference
 import xyz.laziness.dailycommit.utils.AppConstants
+import xyz.laziness.dailycommit.utils.Colors
 
 
 class AppSettingPrefCompat : PreferenceFragmentCompat() {
@@ -25,8 +26,8 @@ class AppSettingPrefCompat : PreferenceFragmentCompat() {
 
         setColorPrefSummary(AppPreference.PREF_KEY_BLOCK_COLOR)
 
-        PreferenceManager.getDefaultSharedPreferences(context).run {
-            registerOnSharedPreferenceChangeListener { _, key ->
+        context?.getSharedPreferences(AppConstants.PREF_NAME, Context.MODE_PRIVATE).run {
+            this?.registerOnSharedPreferenceChangeListener { _, key ->
                 setColorPrefSummary(key)
             }
         }
@@ -36,7 +37,10 @@ class AppSettingPrefCompat : PreferenceFragmentCompat() {
         val colorPref = findPreference(key)
 
         if (colorPref is ListPreference)
-            colorPref.summary = colorPref.entry
+            colorPref.apply {
+                summary = entry ?: Colors.DEFAULTS
+                value = value ?: Colors.DEFAULTS
+            }
 
     }
 
