@@ -13,6 +13,7 @@ import xyz.laziness.dailycommit.ui.modules.main.user.interactor.UserStatusIntera
 import xyz.laziness.dailycommit.ui.modules.main.user.presenter.UserStatusPresenter
 import xyz.laziness.dailycommit.ui.modules.main.view.MainActivity
 import xyz.laziness.dailycommit.utils.extensions.loadImage
+import xyz.laziness.dailycommit.utils.progress.ProgressHelper
 import javax.inject.Inject
 
 
@@ -39,12 +40,17 @@ class UserStatusFragment : BaseFragment(), UserStatusView {
     override fun initUI() {
         val parent = activity as MainActivity
         parent.userInfo?.run { setUiData(this) } ?: presenter.userInfoRequest()
-
     }
 
     override fun setUiData(userInfoResponse: UserInfoResponse) {
+        val context = context
         userInfoResponse.apply {
-            imageViewStatusAvatar.loadImage(avatarUrl)
+            val progress = ProgressHelper.getCircularProgress(context)
+            progress?.run {
+                start()
+                imageViewStatusAvatar.loadImage(avatarUrl, this)
+            } ?: imageViewStatusAvatar.loadImage(avatarUrl)
+
             textViewStatusUsername.text = userName
             textViewStatusBio.text = bio
 
