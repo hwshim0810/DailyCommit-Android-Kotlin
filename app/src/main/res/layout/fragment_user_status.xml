@@ -9,8 +9,8 @@
 
     <ImageView
         android:id="@+id/imageViewStatusAvatar"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:contentDescription="@string/avatar_description"
         app:layout_constraintVertical_bias="0.3"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -30,32 +30,18 @@
         app:layout_constraintTop_toBottomOf="@+id/imageViewStatusAvatar"
         tools:text="@string/app_name" />
 
-    <LinearLayout
-        android:id="@+id/layoutLocations"
-        android:layout_width="match_parent"
+
+    <TextView
+        android:id="@+id/textViewLocation"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:visibility="gone"
         app:layout_constraintVertical_bias="0.05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewStatusUsername">
-
-        <ImageView
-            android:src="@drawable/ic_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/textViewLocation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            tools:text="@string/app_name" />
-
-    </LinearLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatusUsername"
+        tools:text="@string/app_name" />
 
     <TextView
         android:id="@+id/textViewStatusBio"
@@ -65,7 +51,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutLocations" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLocation" />
 
 
 </android.support.constraint.ConstraintLayout>

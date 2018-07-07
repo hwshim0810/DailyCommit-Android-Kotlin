@@ -57,7 +57,7 @@ class UserStatusFragment : BaseFragment(), UserStatusView {
             textViewStatusBio.text = bio
 
             if (!TextUtils.isEmpty(location)) {
-                layoutLocations.visibility = View.VISIBLE
+                textViewLocation.visibility = View.VISIBLE
                 textViewLocation.text = location
             }
         }
