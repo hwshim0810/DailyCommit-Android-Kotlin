@@ -4,7 +4,7 @@
         <item
             android:id="@+id/navItemLogout"
             android:checked="true"
-            android:icon="@drawable/common_google_signin_btn_icon_dark"
+            android:icon="@drawable/ic_outline_exit_to_app_24px"
             android:title="@string/logout" />
     </group>
 </menu>
