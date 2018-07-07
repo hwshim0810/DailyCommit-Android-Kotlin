@@ -6,6 +6,7 @@ import android.support.annotation.IdRes
 import android.support.annotation.StringRes
 import android.support.v4.app.Fragment
 import android.view.View
+import android.widget.ProgressBar
 import dagger.android.support.AndroidSupportInjection
 import xyz.laziness.dailycommit.R
 
@@ -44,4 +45,16 @@ abstract class BaseFragment : Fragment(), BaseView {
 
     override fun isEqualFragmentByTag(@IdRes fragmentFrame: Int, tag: String): Boolean =
             parentActivity.isEqualFragmentByTag(fragmentFrame, tag)
+
+    override fun showProgress() {
+        getBaseActivity().showProgress()
+    }
+
+    override fun hideProgress() {
+        getBaseActivity().hideProgress()
+    }
+
+    override fun setProgressBar(progressBar: ProgressBar) {
+        getBaseActivity().setProgressBar(progressBar)
+    }
 }

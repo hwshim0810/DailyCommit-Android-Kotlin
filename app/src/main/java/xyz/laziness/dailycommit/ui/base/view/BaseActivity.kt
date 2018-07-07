@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.annotation.StringRes
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import dagger.android.AndroidInjection
 import xyz.laziness.dailycommit.R
@@ -11,6 +13,8 @@ import xyz.laziness.dailycommit.utils.AppConstants
 
 
 abstract class BaseActivity : AppCompatActivity(), BaseView {
+
+    private lateinit var progressBar: ProgressBar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,4 +44,15 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
 
     fun superOnBackPressed() = super.onBackPressed()
 
+    override fun showProgress() {
+        progressBar.visibility = View.VISIBLE
+    }
+
+    override fun hideProgress() {
+        progressBar.visibility = View.GONE
+    }
+
+    override fun setProgressBar(progressBar: ProgressBar) {
+        this.progressBar = progressBar
+    }
 }
