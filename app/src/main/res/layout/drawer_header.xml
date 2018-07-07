@@ -15,9 +15,10 @@
 
     <ImageView
         android:id="@+id/userAvatarImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:paddingTop="@dimen/drawer_header_vertical_spacing"
+        android:contentDescription="@string/avatar_description"
         app:srcCompat="@mipmap/ic_launcher_round"/>
 
     <TextView
