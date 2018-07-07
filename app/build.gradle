@@ -39,6 +39,7 @@ ext {
     rxjava2Version = '2.0.6'
     rxandroidVersion = '2.0.2'
     glideVersion = '3.8.0'
+    glideTransformationsVersion = '2.0.2'
     rx2FastAndroidNetworkingVersion = '1.0.1'
     roomDatabaseVersion = '1.1.1'
 }
@@ -80,7 +81,10 @@ dependencies {
 
     // Glide
     implementation "com.github.bumptech.glide:glide:${glideVersion}"
+
+    // Images
     implementation 'com.caverock:androidsvg:1.2.1'
+    implementation "jp.wasabeef:glide-transformations:${glideTransformationsVersion}"
 
     // Network
     implementation "com.amitshekhar.android:rx2-android-networking:${rx2FastAndroidNetworkingVersion}"
