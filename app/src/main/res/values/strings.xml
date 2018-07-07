@@ -58,6 +58,7 @@
     <string name="back_pressed_msg">Press once again to exit</string>
     <string name="back_pressed_error_msg">Exit failed!</string>
     <string name="unknown_error_msg">Unknown error :(</string>
+    <string name="invalid_token_msg">Invalid Token!</string>
 
     <!--App Setting-->
     <string name="pref_theme">Theme</string>

@@ -2,6 +2,7 @@ package xyz.laziness.dailycommit.ui.modules.main.user.presenter
 
 import com.androidnetworking.error.ANError
 import io.reactivex.disposables.CompositeDisposable
+import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.ui.base.presenter.BasePresenterImpl
 import xyz.laziness.dailycommit.ui.modules.main.user.interactor.UserStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.user.view.UserStatusView
@@ -25,11 +26,12 @@ class UserStatusPresenterImpl<V: UserStatusView, I: UserStatusInteractor>
                             .subscribe({
                                 getView()?.setUiData(it)
                             }, {
-                                it as ANError
-                                if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED)
-                                    getView()
-                                else
-                                    this.onError()
+                                if (it is ANError) {
+                                    if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED)
+                                        this.onError(R.string.invalid_token_msg)
+                                    else
+                                        this.onError()
+                                }
                             })
 
             )
