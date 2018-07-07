@@ -32,8 +32,9 @@ import xyz.laziness.dailycommit.ui.modules.main.interactor.MainInteractor
 import xyz.laziness.dailycommit.ui.modules.main.presenter.MainPresenter
 import xyz.laziness.dailycommit.ui.modules.main.settings.view.AppSettingPrefCompat
 import xyz.laziness.dailycommit.ui.modules.main.user.view.UserStatusFragment
-import xyz.laziness.dailycommit.utils.AppConstants
+import xyz.laziness.dailycommit.utils.extensions.loadCircleImage
 import xyz.laziness.dailycommit.utils.extensions.loadImage
+import xyz.laziness.dailycommit.utils.extensions.loadRoundedCornerImage
 import xyz.laziness.dailycommit.utils.extensions.replaceFragmentInActivity
 import xyz.laziness.dailycommit.widget.receiver.WidgetReceiver
 import java.util.*
@@ -153,7 +154,7 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
         userInfoResponse.apply {
             navUserNameText.text = userName
             navUserIdText.text = userId
-            userAvatarImage.loadImage(avatarUrl)
+            userAvatarImage.loadRoundedCornerImage(avatarUrl)
             userInfo = this
         }
     }

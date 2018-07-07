@@ -12,7 +12,9 @@ import xyz.laziness.dailycommit.ui.base.view.BaseFragment
 import xyz.laziness.dailycommit.ui.modules.main.user.interactor.UserStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.user.presenter.UserStatusPresenter
 import xyz.laziness.dailycommit.ui.modules.main.view.MainActivity
+import xyz.laziness.dailycommit.utils.extensions.loadCircleImage
 import xyz.laziness.dailycommit.utils.extensions.loadImage
+import xyz.laziness.dailycommit.utils.extensions.loadRoundedCornerImage
 import xyz.laziness.dailycommit.utils.progress.ProgressHelper
 import javax.inject.Inject
 
@@ -48,8 +50,8 @@ class UserStatusFragment : BaseFragment(), UserStatusView {
             val progress = ProgressHelper.getCircularProgress(context)
             progress?.run {
                 start()
-                imageViewStatusAvatar.loadImage(avatarUrl, this)
-            } ?: imageViewStatusAvatar.loadImage(avatarUrl)
+                imageViewStatusAvatar.loadCircleImage(avatarUrl, this)
+            } ?: imageViewStatusAvatar.loadCircleImage(avatarUrl)
 
             textViewStatusUsername.text = userName
             textViewStatusBio.text = bio
