@@ -5,7 +5,7 @@
     <item
         android:id="@+id/actionAddFriend"
         android:title="@string/add_friend"
-        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:icon="@drawable/ic_outline_person_add_24px"
         app:showAsAction="always" />
 
 </menu>
