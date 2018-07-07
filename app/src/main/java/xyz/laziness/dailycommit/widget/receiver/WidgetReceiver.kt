@@ -13,6 +13,7 @@ import dagger.android.AndroidInjection
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
 import xyz.laziness.dailycommit.R
+import xyz.laziness.dailycommit.R.id.myContributionsWidgetView
 import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
 import xyz.laziness.dailycommit.utils.image.ImageHelper
 import xyz.laziness.dailycommit.widget.provider.WidgetDataProvider
@@ -52,6 +53,11 @@ class WidgetReceiver : AppWidgetProvider() {
                         .placeholder(R.drawable.img_preview_graph)
                         .error(R.drawable.ic_baseline_error_outline_24px)
                         .into(imageView)
+
+                remoteView.run {
+                    val pendingIntent = getGraphUpdateIntent(context)
+                    setOnClickPendingIntent(myContributionsWidgetView, pendingIntent)
+                }
                 appWidgetManager?.updateAppWidget(appWidgetIds, remoteView)
             }).subscribe({}, {})
         } else {
@@ -74,6 +80,14 @@ class WidgetReceiver : AppWidgetProvider() {
         return PendingIntent.getActivity(context, 0,
                 Intent(context, LoginActivity::class.java),
                 PendingIntent.FLAG_UPDATE_CURRENT)
+    }
+
+    private fun getGraphUpdateIntent(context: Context): PendingIntent {
+        val intent = Intent(context, WidgetReceiver::class.java).apply {
+            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        }
+        return PendingIntent.getBroadcast(context, 0,
+                intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 
 }
