@@ -32,8 +32,6 @@ import xyz.laziness.dailycommit.ui.modules.main.interactor.MainInteractor
 import xyz.laziness.dailycommit.ui.modules.main.presenter.MainPresenter
 import xyz.laziness.dailycommit.ui.modules.main.settings.view.AppSettingPrefCompat
 import xyz.laziness.dailycommit.ui.modules.main.user.view.UserStatusFragment
-import xyz.laziness.dailycommit.utils.extensions.loadCircleImage
-import xyz.laziness.dailycommit.utils.extensions.loadImage
 import xyz.laziness.dailycommit.utils.extensions.loadRoundedCornerImage
 import xyz.laziness.dailycommit.utils.extensions.replaceFragmentInActivity
 import xyz.laziness.dailycommit.widget.receiver.WidgetReceiver
@@ -108,6 +106,9 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
     }
 
     override fun onViewBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START))
+            drawerLayout.closeDrawer(GravityCompat.START)
+
         if (fragmentDeque.size > 1) {
             isBackPressed = true
             fragmentDeque.pop()
