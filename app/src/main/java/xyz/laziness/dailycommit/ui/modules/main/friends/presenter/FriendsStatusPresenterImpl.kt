@@ -17,12 +17,16 @@ class FriendsStatusPresenterImpl<V: FriendsStatusView, I: FriendsStatusInteracto
         FriendsStatusPresenter<V, I> {
 
     override fun doMyContributionRequest() {
+        getView()?.showProgress()
         interactor?.let {
             compositeDisposable.add(
                     it.doMyContributionRequest()
                             .compose(schedulerHelper.ioToMainSingleScheduler())
                             .subscribe({
-                                getView()?.displayMyContributions(it)
+                                getView()?.run{
+                                    displayMyContributions(it)
+                                    hideProgress()
+                                }
                             }, {
                                 this.onError()
                             })
@@ -31,6 +35,7 @@ class FriendsStatusPresenterImpl<V: FriendsStatusView, I: FriendsStatusInteracto
     }
 
     override fun doFriendsContributionRequest() {
+        getView()?.showProgress()
         val interactor = interactor
         interactor?.let {
             compositeDisposable.add(
@@ -42,19 +47,28 @@ class FriendsStatusPresenterImpl<V: FriendsStatusView, I: FriendsStatusInteracto
                             interactor.doContributionRequest(friendName)
                                     .compose(schedulerHelper.ioToMainSingleScheduler())
                                     .toObservable()
-                                    .doOnNext { getView()?.displayFriendContributions(it, friendName) }
+                                    .doOnNext {
+                                        getView()?.run {
+                                            displayFriendContributions(it, friendName)
+                                            hideProgress()
+                                        }
+                                    }
                         }.subscribe({}, { this.onError() })
             )
         }
     }
 
     override fun doFriendContributionRequest(friendName: String) {
+        getView()?.showProgress()
         interactor?.let {
             compositeDisposable.add(
                     it.doContributionRequest(friendName)
                             .compose(schedulerHelper.ioToMainSingleScheduler())
                             .subscribe({
-                                getView()?.displayFriendContributions(it, friendName)
+                                getView()?.run {
+                                    displayFriendContributions(it, friendName)
+                                    hideProgress()
+                                }
                             }, {
                                 this.onError()
                             })

@@ -48,6 +48,7 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
 
     override fun initUI() {
         initFriendsStatusRecyclerView()
+        setProgressBar(graphProgress)
 
         presenter.run {
             doMyContributionRequest()
