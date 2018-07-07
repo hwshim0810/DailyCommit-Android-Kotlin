@@ -14,7 +14,7 @@
         android:textColorHint="@color/gray">
 
         <android.support.design.widget.TextInputEditText
-            android:id="@+id/editTextEmail"
+            android:id="@+id/editTextUsername"
             style="@style/TextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -23,7 +23,7 @@
             android:background="@drawable/input_border_bottom"
             android:cursorVisible="true"
             android:gravity="center|left|bottom"
-            android:hint="@string/email"
+            android:hint="@string/username"
             android:inputType="textEmailAddress"
             android:maxLength="50"
             android:paddingBottom="10dp"
@@ -42,6 +42,7 @@
         app:passwordToggleEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextPassword"
             style="@style/TextStyle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -70,6 +71,7 @@
 
         <android.support.design.widget.TextInputEditText
             style="@style/TextStyle"
+            android:id="@+id/editTextAccessToken"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
@@ -87,7 +89,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btnTokenLogin"
+        android:id="@+id/btnLoginSubmit"
         style="@style/Button.Primary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
