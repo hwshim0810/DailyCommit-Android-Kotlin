@@ -23,8 +23,8 @@ abstract class BaseFragment : Fragment(), BaseView {
         setHasOptionsMenu(false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
         initUI()
     }
 
