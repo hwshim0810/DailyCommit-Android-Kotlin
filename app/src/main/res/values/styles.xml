@@ -60,7 +60,18 @@
     <style name="TextStyle.StatusHeading" parent="TextStyle">
         <item name="android:textSize">18sp</item>
         <item name="android:paddingStart">5dp</item>
-        <item name="android:textColor">@color/gray</item>
+        <item name="android:textColor">@color/light_black</item>
+    </style>
+
+    <style name="TextStyle.StatusName" parent="TextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:textColor">@color/light_black</item>
+    </style>
+
+    <style name="GraphCardItem">
+        <item name="cardCornerRadius">@dimen/space_xs</item>
+        <item name="contentPadding">@dimen/space_xs</item>
     </style>
 
 </resources>

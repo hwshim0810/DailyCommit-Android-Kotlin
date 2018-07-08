@@ -19,6 +19,9 @@
     <!--Toolbar Menu-->
     <string name="add_friend">Add Friend</string>
 
+    <!--Button-->
+    <string name="add_more_friend">Add More Friend</string>
+
     <!--Dialog-->
     <string name="ok">OK</string>
     <string name="cancel">@android:string/cancel</string>
@@ -43,6 +46,8 @@
     <string name="avatar_description">User AvatarImage</string>
     <string name="graph_widget_description">User Contribution graph</string>
     <string name="login_widget_image_description">Login Widget background</string>
+    <string name="user_description">User Image</string>
+    <string name="visible_description">Visible</string>
 
     <!--Widget-->
     <string name="login">LOGIN</string>
