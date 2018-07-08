@@ -19,6 +19,17 @@ class LoginChoicePresenterImpl<V: LoginChoiceView, I: LoginChoiceInteractor>
 
     override fun onBasicLoginButtonClick() = getView()?.openLoginInputFragment(AppConstants.LoginMethod.BASIC)
 
-    override fun onTokenLoginButtonClick() = getView()?.openLoginInputFragment(AppConstants.LoginMethod.TOKEN)
-
+    override fun onWebViewLoginButtonClick() {
+        interactor?.let {
+            compositeDisposable.add(
+                    it.getCustomTabsIntent()
+                            .compose(schedulerHelper.ioToMainSingleScheduler())
+                            .subscribe({
+                                getView()?.openGithubLoginWebView(it)
+                            }, {
+                                this.onError()
+                            })
+            )
+        }
+    }
 }

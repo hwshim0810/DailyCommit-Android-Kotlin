@@ -9,6 +9,6 @@ interface LoginChoicePresenter<V: LoginChoiceView, I: LoginChoiceInteractor> : B
 
     fun onBasicLoginButtonClick(): Unit?
 
-    fun onTokenLoginButtonClick(): Unit?
+    fun onWebViewLoginButtonClick(): Unit?
 
 }
