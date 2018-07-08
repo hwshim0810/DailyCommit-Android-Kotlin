@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/GraphCardItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imageVIewUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/user_description"
+            android:src="@drawable/ic_outline_person_24px" />
 
         <TextView
             android:id="@+id/textViewFriendName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/TextStyle.StatusHeading" />
+            style="@style/TextStyle.StatusName"
+            android:gravity="top"
+            android:layout_alignBottom="@id/imageVIewUser"
+            android:layout_toEndOf="@id/imageVIewUser" />
 
         <xyz.laziness.dailycommit.ui.custom.GitHubGraphView
             android:id="@+id/friendContributionsView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="100dp"/>
+            android:layout_below="@id/textViewFriendName"
+            android:minHeight="100dp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
 </android.support.v7.widget.CardView>
