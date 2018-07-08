@@ -18,6 +18,7 @@ import xyz.laziness.dailycommit.ui.base.view.BaseFragment
 import xyz.laziness.dailycommit.ui.custom.swipe.SwipeController
 import xyz.laziness.dailycommit.ui.modules.main.friends.interactor.FriendsStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.friends.presenter.FriendsStatusPresenter
+import xyz.laziness.dailycommit.ui.modules.main.view.MainActivity
 import javax.inject.Inject
 
 
@@ -48,6 +49,7 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
 
     override fun initUI() {
         initFriendsStatusRecyclerView()
+        addOnClickListeners()
         setProgressBar(graphProgress)
 
         presenter.run {
@@ -92,5 +94,12 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
             itemTouchHelper.attachToRecyclerView(recyclerFriendsStatus)
         }
 
+    }
+
+    private fun addOnClickListeners() {
+        addFriendLayout.setOnClickListener {
+            val activity = getBaseActivity() as MainActivity
+            activity.showAddFriendDialog()
+        }
     }
 }

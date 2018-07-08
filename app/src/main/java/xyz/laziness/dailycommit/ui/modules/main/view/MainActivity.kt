@@ -200,17 +200,7 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
         sendBroadcast(intent)
     }
 
-    private fun setUpDrawer() {
-        setSupportActionBar(toolbar)
-        ActionBarDrawerToggle(this, drawerLayout, toolbar,
-                R.string.drawer_open, R.string.drawer_close).run {
-            drawerLayout.addDrawerListener(this)
-            syncState()
-        }
-        drawerNavView.setNavigationItemSelectedListener(drawerNavItemSelectedListener)
-    }
-
-    private fun showAddFriendDialog() {
+    override fun showAddFriendDialog() {
         val editText = EditText(this).apply {
             inputType = InputType.TYPE_CLASS_TEXT
         }
@@ -224,6 +214,16 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
                 .setNegativeButton(getString(R.string.cancel))
                 { dialog, _ -> dialog.cancel() }
                 .show()
+    }
+
+    private fun setUpDrawer() {
+        setSupportActionBar(toolbar)
+        ActionBarDrawerToggle(this, drawerLayout, toolbar,
+                R.string.drawer_open, R.string.drawer_close).run {
+            drawerLayout.addDrawerListener(this)
+            syncState()
+        }
+        drawerNavView.setNavigationItemSelectedListener(drawerNavItemSelectedListener)
     }
 
     private fun pushFragmentDeque(@IdRes id: Int) {

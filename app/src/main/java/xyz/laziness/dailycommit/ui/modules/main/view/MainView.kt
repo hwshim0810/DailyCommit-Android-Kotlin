@@ -29,4 +29,6 @@ interface MainView : BaseView {
 
     fun sendLogoutBroadCast()
 
+    fun showAddFriendDialog()
+
 }
