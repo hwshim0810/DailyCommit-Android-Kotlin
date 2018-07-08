@@ -10,4 +10,11 @@
     <color name="light_black">#2A2A2A</color>
 
     <color name="shadow">#D0D8DC</color>
+
+    <!--App Color Theme-->
+    <color name="level_zero">#EBEDF0</color>
+    <color name="level_one">#C6E48B</color>
+    <color name="level_two">#7BC96F</color>
+    <color name="level_three">#239A3B</color>
+    <color name="level_four">#196127</color>
 </resources>
