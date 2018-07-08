@@ -30,9 +30,13 @@
     <string name="remove_friend">Remove Friend</string>
     <string name="confirm_remove_msg">Remove friend from list?</string>
 
+    <!--Login Activity-->
+    <string name="welcome_msg">Welcome to DailyCommit!</string>
+
     <!--Login Fragment-->
     <string name="basic_login">Basic Authentication</string>
     <string name="token_login">AccessToken Authentication</string>
+    <string name="browser_login">Login with Browser</string>
     <string name="submit">Submit</string>
 
     <!--Friend Status-->
@@ -48,6 +52,7 @@
     <string name="login_widget_image_description">Login Widget background</string>
     <string name="user_description">User Image</string>
     <string name="visible_description">Visible</string>
+    <string name="logo_description">Logo Image</string>
 
     <!--Widget-->
     <string name="login">LOGIN</string>
