@@ -42,6 +42,7 @@ ext {
     glideTransformationsVersion = '2.0.2'
     rx2FastAndroidNetworkingVersion = '1.0.1'
     roomDatabaseVersion = '1.1.1'
+    customTabHelperVersion = '1.1.2'
 }
 
 configurations {
@@ -56,6 +57,7 @@ dependencies {
     implementation "com.android.support:design:${supportLibraryVersion}"
     implementation "com.android.support:cardview-v7:${supportLibraryVersion}"
     implementation "com.android.support:preference-v7:${supportLibraryVersion}"
+    implementation "com.android.support:customtabs:${supportLibraryVersion}"
     implementation 'com.android.support.constraint:constraint-layout:1.1.1'
 
     // Test
@@ -97,6 +99,9 @@ dependencies {
     implementation "android.arch.persistence.room:runtime:${roomDatabaseVersion}"
     implementation "android.arch.persistence.room:rxjava2:${roomDatabaseVersion}"
     kapt "android.arch.persistence.room:compiler:${roomDatabaseVersion}"
+
+    // CustomTabs
+    implementation "saschpe.android:customtabs:${customTabHelperVersion}"
 }
 
 apply plugin: 'com.google.gms.google-services'
