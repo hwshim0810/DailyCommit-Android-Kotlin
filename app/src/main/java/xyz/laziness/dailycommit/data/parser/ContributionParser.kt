@@ -24,9 +24,9 @@ class ContributionParser {
             baseBlockColor = baseBlockColor ?: defaultColors
             return when (element.attr(fillAttr).toUpperCase()) {
                 defaultColors?.get(0) ?: "#EBEDF0" -> baseBlockColor!![0]
-                defaultColors?.get(1) ?: "#239A3B" -> baseBlockColor!![1]
-                defaultColors?.get(2) ?: "#C6E48B" -> baseBlockColor!![2]
-                defaultColors?.get(3) ?: "#7BC96F" -> baseBlockColor!![3]
+                defaultColors?.get(1) ?: "#C6E48B" -> baseBlockColor!![1]
+                defaultColors?.get(2) ?: "#7BC96F" -> baseBlockColor!![2]
+                defaultColors?.get(3) ?: "#239A3B" -> baseBlockColor!![3]
                 defaultColors?.get(4) ?: "#196127" -> baseBlockColor!![4]
                 else -> baseBlockColor!![0]
             }

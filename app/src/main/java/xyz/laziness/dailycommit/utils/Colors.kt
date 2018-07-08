@@ -13,7 +13,7 @@ object Colors {
     private const val ZERO_COLOR = "#EBEDF0"
 
     val baseColors = hashMapOf(
-            DEFAULTS to listOfNotNull(ZERO_COLOR, "#239A3B", "#C6E48B", "7BC96F", "#196127"),
+            DEFAULTS to listOfNotNull(ZERO_COLOR, "#C6E48B", "#7BC96F", "#239A3B", "#196127"),
             CLASSIC to listOfNotNull(ZERO_COLOR, "#CAC172", "#8F775C", "#DA8D40", "#2D130A"),
             OKINAWA_BLUE to listOfNotNull(ZERO_COLOR, "#7EB2ED", "#4F7BC3", "#384B88", "#1C203C"),
             VELVET to listOfNotNull(ZERO_COLOR, "#EE453F", "#C62D41", "#800E36", "#2A1729"),
