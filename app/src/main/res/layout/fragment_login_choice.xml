@@ -9,25 +9,20 @@
 
     <android.support.v7.widget.AppCompatButton
         android:id="@+id/btnBasicLogin"
-        style="@style/Button.Primary"
+        android:theme="@style/AppTheme.AppButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:padding="10dp"
-        android:text="@string/basic_login"
-        android:textSize="18dp" />
-
+        android:text="@string/basic_login" />
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btnTokenLogin"
-        style="@style/Button.Primary"
+        android:id="@+id/btnBrowserLogin"
+        android:theme="@style/AppTheme.GrayAppButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="15dp"
-        android:padding="10dp"
-        android:text="@string/token_login"
-        android:textSize="18dp" />
+        android:layout_marginTop="24dp"
+        android:drawableStart="@drawable/ic_github_24px"
+        android:text="@string/browser_login" />
 
 </LinearLayout>
