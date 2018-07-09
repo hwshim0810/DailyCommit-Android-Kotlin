@@ -11,6 +11,7 @@ object GitHubApiConstants {
     const val LOGIN_REDIRECT_URL = "dc://login"
     const val REST_URL = "https://api.github.com"
 
+    const val OAUTH_LOGIN_URL = "$BASE_URL/login/oauth/access_token"
     const val REST_LOGIN_URL = "$REST_URL/authorizations"
     const val USER_INFO_URL = "$REST_URL/user"
     const val PUBLIC_USER_INFO_URL = "$REST_URL/users/%s"
