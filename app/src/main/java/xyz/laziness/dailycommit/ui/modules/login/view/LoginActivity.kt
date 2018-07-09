@@ -67,15 +67,11 @@ class LoginActivity : BaseActivity(), LoginView, HasSupportFragmentInjector {
         }
     }
 
-    override fun openWebLoginFragment() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun openLoginInputFragment(loginMethod: AppConstants.LoginMethod) {
         when (loginMethod) {
             AppConstants.LoginMethod.BASIC -> openBasicLoginFragment()
             AppConstants.LoginMethod.TOKEN -> openTokenLoginFragment()
-            AppConstants.LoginMethod.WEB -> openWebLoginFragment()
+            else -> return
         }
     }
 

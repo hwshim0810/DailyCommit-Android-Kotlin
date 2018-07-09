@@ -12,8 +12,6 @@ interface LoginView : BaseView {
 
     fun openTokenLoginFragment()
 
-    fun openWebLoginFragment()
-
     fun openLoginInputFragment(loginMethod: AppConstants.LoginMethod)
 
     fun startMainActivity()
