@@ -17,7 +17,7 @@ class LoginChoiceInteractorImpl
             Single.fromCallable {
                 CustomTabsIntent.Builder()
                         .addDefaultShareMenuItem()
-                        .setToolbarColor(ContextCompat.getColor(context, R.color.level_three))
+                        .setToolbarColor(ContextCompat.getColor(context, R.color.neutral_color))
                         .setShowTitle(true)
                         .build()
             }

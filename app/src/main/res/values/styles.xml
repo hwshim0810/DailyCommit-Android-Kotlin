@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="android:windowContentOverlay">@null</item>
         <item name="colorPrimary">@color/level_three</item>
-        <item name="colorPrimaryDark">@color/level_three</item>
+        <item name="colorPrimaryDark">@color/neutral_color</item>
         <item name="colorAccent">@color/level_four</item>
         <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
     </style>
