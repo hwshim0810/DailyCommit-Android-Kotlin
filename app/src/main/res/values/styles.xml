@@ -25,7 +25,8 @@
     </style>
 
     <style name="TextStyle.Heading" parent="TextStyle">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/light_black</item>
     </style>
     
     <style name="TextStyle.WidgetLogin" parent="TextStyle">
@@ -34,7 +35,7 @@
     </style>
 
     <style name="AppTheme.AppButton" parent="AppTheme.GreenRipple">
-        <item name="android:colorButtonNormal">@color/level_two</item>
+        <item name="android:colorButtonNormal">@color/level_three</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
     </style>
