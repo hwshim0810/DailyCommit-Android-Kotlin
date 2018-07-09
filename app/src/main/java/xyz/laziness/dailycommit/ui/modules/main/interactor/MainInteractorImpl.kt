@@ -21,6 +21,7 @@ class MainInteractorImpl
 
     override fun removeUserInfoInPreference() {
         appPreference.let {
+            it.setCurrentUserName("")
             it.setCurrentUserToken(null)
             it.setCurrentLoginState(AppConstants.LoginState.LOGOUT)
         }
