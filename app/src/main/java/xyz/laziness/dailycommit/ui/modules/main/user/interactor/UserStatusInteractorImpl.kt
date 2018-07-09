@@ -16,6 +16,6 @@ class UserStatusInteractorImpl
 
     override fun updateUserName(userInfoResponse: UserInfoResponse) {
         if (appPreference.getCurrentUserName().isEmpty())
-            appPreference.setCurrentUserName(userInfoResponse.userName)
+            appPreference.setCurrentUserName(userInfoResponse.userId)
     }
 }
