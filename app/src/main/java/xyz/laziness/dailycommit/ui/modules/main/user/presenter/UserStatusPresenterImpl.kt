@@ -19,11 +19,13 @@ class UserStatusPresenterImpl<V: UserStatusView, I: UserStatusInteractor>
         UserStatusPresenter<V, I> {
 
     override fun userInfoRequest() {
+        val interactor = interactor
         interactor?.let {
             compositeDisposable.add(
                     it.doUserInfoApiCall()
                             .compose(schedulerHelper.ioToMainObservableScheduler())
                             .subscribe({
+                                interactor.updateUserName(it)
                                 getView()?.setUiData(it)
                             }, {
                                 if (it is ANError) {
