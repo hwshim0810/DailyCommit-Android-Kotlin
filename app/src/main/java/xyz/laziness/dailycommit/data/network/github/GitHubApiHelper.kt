@@ -12,6 +12,7 @@ import org.jsoup.Jsoup
 import xyz.laziness.dailycommit.data.network.github.data.ContributionDay
 import xyz.laziness.dailycommit.data.network.github.request.LoginRequest
 import xyz.laziness.dailycommit.data.network.github.response.LoginResponse
+import xyz.laziness.dailycommit.data.network.github.response.OauthTokenResponse
 import xyz.laziness.dailycommit.data.network.github.response.UserInfoResponse
 import xyz.laziness.dailycommit.data.parser.ContributionParser
 import javax.inject.Inject
@@ -55,4 +56,14 @@ class GitHubApiHelper @Inject constructor() : GitHubApi {
                             .build())
                     .build()
                     .getObjectObservable(UserInfoResponse::class.java)
+
+    override fun doOauthAccessTokenCall(code: String): Single<OauthTokenResponse> =
+            Rx2AndroidNetworking.post(GitHubApiConstants.OAUTH_LOGIN_URL)
+                    .addApplicationJsonBody(LoginRequest.OauthLoginRequest(code = code))
+                    .addHeaders("Accept", "application/json")
+                    .setOkHttpClient(OkHttpClient.Builder()
+                            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                            .build())
+                    .build()
+                    .getObjectSingle(OauthTokenResponse::class.java)
 }
