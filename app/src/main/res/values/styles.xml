@@ -26,7 +26,7 @@
 
     <style name="TextStyle.Heading" parent="TextStyle">
         <item name="android:textSize">22sp</item>
-        <item name="android:textColor">@color/light_black</item>
+        <item name="android:textColor">@color/white</item>
     </style>
     
     <style name="TextStyle.WidgetLogin" parent="TextStyle">
