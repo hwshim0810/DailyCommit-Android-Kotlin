@@ -20,4 +20,6 @@ interface LoginView : BaseView {
 
     fun sendLoginBroadCast()
 
+    fun showLoginError(errCode: Int)
+
 }

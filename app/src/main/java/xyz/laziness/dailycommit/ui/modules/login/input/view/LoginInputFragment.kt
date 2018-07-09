@@ -47,12 +47,7 @@ class LoginInputFragment : BaseFragment(), LoginInputView {
     }
 
     override fun showLoginError(errCode: Int) {
-        when (errCode) {
-            AppConstants.EMPTY_USERNAME_ERROR -> Toast.makeText(context, getString(R.string.empty_username_msg), Toast.LENGTH_SHORT).show()
-            AppConstants.LOGIN_FAILURE_ERROR -> Toast.makeText(context, getString(R.string.login_failure_msg), Toast.LENGTH_SHORT).show()
-            AppConstants.EMPTY_SECRET_ERROR -> Toast.makeText(context,
-                    if (isBasic) getString(R.string.empty_password_msg) else getString(R.string.empty_token_msg), Toast.LENGTH_SHORT).show()
-        }
+        (getBaseActivity() as? LoginActivity)?.showLoginError(errCode)
     }
 
     override fun startMainActivity() {

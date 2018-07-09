@@ -4,6 +4,7 @@ import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.widget.Toast
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
@@ -93,6 +94,26 @@ class LoginActivity : BaseActivity(), LoginView, HasSupportFragmentInjector {
             action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
         }
         sendBroadcast(intent)
+    }
+
+    override fun showLoginError(errCode: Int) {
+        when (errCode) {
+            AppConstants.EMPTY_USERNAME_ERROR -> Toast.makeText(this, getString(R.string.empty_username_msg), Toast.LENGTH_SHORT).show()
+            AppConstants.LOGIN_FAILURE_ERROR -> Toast.makeText(this, getString(R.string.login_failure_msg), Toast.LENGTH_SHORT).show()
+            AppConstants.EMPTY_SECRET_ERROR -> Toast.makeText(this, getString(R.string.empty_token_msg), Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    override fun onNewIntent(intent: Intent?) {
+        super.onNewIntent(intent)
+        presenter.onHandleOauthIntent(intent)
+        setIntent(null)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.onHandleOauthIntent(intent)
+        intent = null
     }
 
 }
