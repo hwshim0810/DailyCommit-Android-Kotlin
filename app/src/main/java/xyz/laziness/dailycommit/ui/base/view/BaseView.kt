@@ -22,4 +22,6 @@ interface BaseView {
 
     fun setProgressBar(progressBar: ProgressBar)
 
+    fun onUnauthorizedResponse()
+
 }

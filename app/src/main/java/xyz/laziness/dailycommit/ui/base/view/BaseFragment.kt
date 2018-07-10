@@ -57,4 +57,8 @@ abstract class BaseFragment : Fragment(), BaseView {
     override fun setProgressBar(progressBar: ProgressBar) {
         getBaseActivity().setProgressBar(progressBar)
     }
+
+    override fun onUnauthorizedResponse() {
+        getBaseActivity().onUnauthorizedResponse()
+    }
 }

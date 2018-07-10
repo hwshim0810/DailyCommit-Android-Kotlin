@@ -36,10 +36,12 @@ class MainPresenterImpl<V: MainView, I: MainInteractor>
                             .subscribe({
                                 getView()?.setViewData(it)
                             }, {
-                                it as ANError
-                                if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED)
-                                    getView()
-                                else
+                                if (it is ANError) {
+                                    if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED)
+                                        getView()?.onUnauthorizedResponse()
+                                    else
+                                        this.onError()
+                                } else
                                     this.onError()
                             })
 
