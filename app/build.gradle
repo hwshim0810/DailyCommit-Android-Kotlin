@@ -75,7 +75,6 @@ dependencies {
 
     // FireBase
     implementation "com.google.firebase:firebase-core:${fireBaseVersion}"
-    implementation "com.google.firebase:firebase-auth:${fireBaseVersion}"
 
     // Reactive
     implementation "io.reactivex.rxjava2:rxjava:${rxjava2Version}"
