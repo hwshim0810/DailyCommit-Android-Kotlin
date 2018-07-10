@@ -5,7 +5,7 @@
 
     <!--Bottom Navigation-->
     <string name="title_profile">Profile</string>
-    <string name="title_friends">Friends</string>
+    <string name="title_friends">Followers</string>
     <string name="title_settings">Settings</string>
 
     <!--Drawer Menu-->
@@ -17,18 +17,15 @@
     <string name="access_token">AccessToken</string>
 
     <!--Toolbar Menu-->
-    <string name="add_friend">Add Friend</string>
-
-    <!--Button-->
-    <string name="add_more_friend">Add More Friend</string>
+    <string name="add_friend">Add Follower</string>
 
     <!--Dialog-->
     <string name="ok">OK</string>
     <string name="cancel">@android:string/cancel</string>
     <string name="add_success_msg">Successfully Add</string>
-    <string name="user_add_fail_msg">I\'m my eternal friend</string>
-    <string name="remove_friend">Remove Friend</string>
-    <string name="confirm_remove_msg">Remove friend from list?</string>
+    <string name="user_add_fail_msg">I\'m your best friend</string>
+    <string name="remove_friend">Remove follower</string>
+    <string name="confirm_remove_msg">Remove follower from list?</string>
 
     <!--Login Activity-->
     <string name="welcome_msg">Welcome to DailyCommit!</string>
@@ -36,12 +33,12 @@
     <!--Login Fragment-->
     <string name="basic_login">Basic Authentication</string>
     <string name="token_login">AccessToken Authentication</string>
-    <string name="browser_login">Login with Browser</string>
+    <string name="browser_login">Login to Browser</string>
     <string name="submit">Submit</string>
 
     <!--Friend Status-->
     <string name="my_contributions">My Contributions</string>
-    <string name="friend_contributions">Friend\'s Contributions</string>
+    <string name="friend_contributions">Follower\'s Contributions</string>
 
     <string name="drawer_open">Open drawer</string>
     <string name="drawer_close">Close drawer</string>
@@ -60,10 +57,10 @@
     <string name="normal_graph_label">GITHUB GRAPH</string>
 
     <!--Toast Messages-->
-    <string name="empty_username_msg">Username cannot be blank</string>
-    <string name="empty_token_msg">AccessToken cannot be blank</string>
-    <string name="empty_password_msg">Password cannot be blank</string>
-    <string name="invalid_email_msg">Please Enter a valid email</string>
+    <string name="empty_username_msg">Please enter your Username!</string>
+    <string name="empty_token_msg">Please enter your AccessToken!</string>
+    <string name="empty_password_msg">Please enter your Password!</string>
+    <string name="invalid_email_msg">Please Enter a valid E-mail!</string>
     <string name="login_failure_msg">Login failed!</string>
     <string name="back_pressed_msg">Press once again to exit</string>
     <string name="back_pressed_error_msg">Exit failed!</string>
