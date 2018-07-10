@@ -42,6 +42,7 @@ class LoginInputFragment : BaseFragment(), LoginInputView {
     override fun initUI() {
         isBasic = arguments?.getBoolean(BundleConstants.INPUT_DISPLAY) ?: true
 
+        editTextUsername.requestFocus()
         toggleInputVisible(isBasic)
         setOnclickListeners()
     }

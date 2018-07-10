@@ -25,9 +25,11 @@
             android:cursorVisible="true"
             android:gravity="center|start|bottom"
             android:hint="@string/username"
-            android:inputType="textEmailAddress"
+            android:inputType="text"
             android:maxLength="50"
-            android:paddingBottom="10dp"
+            android:lines="1"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="15dp"
             android:textColor="@color/light_black"
             android:textSize="18sp" />
 
@@ -55,7 +57,37 @@
             android:gravity="center|start|bottom"
             android:inputType="textPassword"
             android:maxLength="50"
-            android:paddingBottom="10dp"
+            android:lines="1"
+            android:paddingBottom="15dp"
+            android:textColor="@color/light_black"
+            android:textSize="18sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputOTP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:hint="@string/otp_code"
+        android:textColorHint="@color/level_four"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextOTP"
+            style="@style/TextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/input_border_bottom"
+            android:cursorVisible="true"
+            android:gravity="center|start|bottom"
+            android:inputType="number"
+            android:maxLength="20"
+            android:lines="1"
+            android:paddingBottom="20dp"
             android:textColor="@color/light_black"
             android:textSize="18sp" />
 
@@ -83,7 +115,8 @@
             android:gravity="center|start|bottom"
             android:inputType="textPassword"
             android:maxLength="50"
-            android:paddingBottom="10dp"
+            android:lines="1"
+            android:paddingBottom="15dp"
             android:textColor="@color/light_black"
             android:textSize="18sp" />
 
