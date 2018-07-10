@@ -73,7 +73,7 @@ class MainPresenterImpl<V: MainView, I: MainInteractor>
                     it.doPublicUserInfoApiCall(friendName)
                             .compose(schedulerHelper.ioToMainObservableScheduler())
                             .subscribe({
-                                if (it) getView()?.onResponseAddingFriend(friendName)
+                                if (it.second) getView()?.onResponseAddingFriend(friendName, it.first)
                                 else getView()?.showToastMessage(R.string.user_add_fail_msg)
                             }, {
                                 it as ANError

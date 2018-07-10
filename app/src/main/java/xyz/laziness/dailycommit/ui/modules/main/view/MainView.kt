@@ -21,7 +21,7 @@ interface MainView : BaseView {
 
     fun unlockDrawer(): Unit?
 
-    fun onResponseAddingFriend(friendName: String)
+    fun onResponseAddingFriend(friendName: String, id: Long)
 
     fun showToastMessage(@StringRes message: Int)
 

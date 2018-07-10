@@ -27,9 +27,9 @@ class MainInteractorImpl
         }
     }
 
-    override fun doPublicUserInfoApiCall(friendName: String): Observable<Boolean> {
+    override fun doPublicUserInfoApiCall(friendName: String): Observable<Pair<Long, Boolean>> {
         if (friendName == appPreference.getCurrentUserName())
-            return Observable.just(false)
+            return Observable.just(Pair(0L, false))
 
         return apiHelper.doPublicUserInfoApiCall(friendName)
                 .concatMap {

@@ -16,6 +16,13 @@ class FriendsStatusPresenterImpl<V: FriendsStatusView, I: FriendsStatusInteracto
         BasePresenterImpl<V, I>(interactor = interactor, schedulerHelper = schedulerHelper, compositeDisposable = disposable),
         FriendsStatusPresenter<V, I> {
 
+    companion object {
+
+        var currentId: Long = 0L
+
+    }
+
+
     override fun doMyContributionRequest() {
         getView()?.showProgress()
         interactor?.let {
@@ -35,31 +42,44 @@ class FriendsStatusPresenterImpl<V: FriendsStatusView, I: FriendsStatusInteracto
     }
 
     override fun doFriendsContributionRequest() {
-        getView()?.showProgress()
+        getView()?.run {
+            isLoading = true
+            showProgress()
+        }
+
         val interactor = interactor
         interactor?.let {
             compositeDisposable.add(
-                it.loadFriends()
+                it.loadFriends(currentId)
                         .compose(schedulerHelper.ioToMainObservableScheduler())
                         .flatMapIterable { it }
                         .concatMap {
                             val friendName = it.friendName
+                            currentId = it.id
                             interactor.doContributionRequest(friendName)
                                     .compose(schedulerHelper.ioToMainSingleScheduler())
                                     .toObservable()
                                     .doOnNext {
-                                        getView()?.run {
-                                            displayFriendContributions(it, friendName)
-                                            hideProgress()
-                                        }
+                                        getView()?.displayFriendContributions(it, friendName)
                                     }
-                        }.subscribe({}, { this.onError() })
+                        }.subscribe({}, {
+                            this.onError()
+                        }, {
+                            getView()?.run {
+                                hideProgress()
+                                isLoading = false
+                            }
+                        })
             )
         }
     }
 
     override fun doFriendContributionRequest(friendName: String) {
-        getView()?.showProgress()
+        getView()?.run {
+            isLoading = true
+            showProgress()
+        }
+
         interactor?.let {
             compositeDisposable.add(
                     it.doContributionRequest(friendName)

@@ -27,6 +27,7 @@ import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.data.network.github.response.UserInfoResponse
 import xyz.laziness.dailycommit.ui.base.view.BaseActivity
 import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
+import xyz.laziness.dailycommit.ui.modules.main.friends.presenter.FriendsStatusPresenterImpl
 import xyz.laziness.dailycommit.ui.modules.main.friends.view.FriendsStatusFragment
 import xyz.laziness.dailycommit.ui.modules.main.interactor.MainInteractor
 import xyz.laziness.dailycommit.ui.modules.main.presenter.MainPresenter
@@ -176,11 +177,13 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
                 }
             } ?: false
 
-    override fun onResponseAddingFriend(friendName: String) {
+    override fun onResponseAddingFriend(friendName: String, id: Long) {
         if (isEqualFragmentByTag(R.id.contentFrame, FriendsStatusFragment.TAG)) {
             val fragmentFrame = supportFragmentManager.findFragmentByTag(FriendsStatusFragment.TAG) as FriendsStatusFragment
 
             if (!fragmentFrame.friendStatusAdapter.isFriendContain(friendName)) {
+                FriendsStatusPresenterImpl.currentId = id
+                fragmentFrame.isLoading = false
                 fragmentFrame.presenter.doFriendContributionRequest(friendName)
             }
         }

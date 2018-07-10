@@ -6,6 +6,8 @@ import xyz.laziness.dailycommit.ui.base.view.BaseView
 
 interface FriendsStatusView : BaseView {
 
+    var isLoading: Boolean
+
     fun displayMyContributions(contributions: List<ContributionDay>): Unit?
 
     fun displayFriendContributions(contributions: List<ContributionDay>, friendName: String): Unit?

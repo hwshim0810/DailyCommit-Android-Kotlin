@@ -13,7 +13,7 @@ interface FriendsStatusInteractor : BaseInteractor {
 
     fun doContributionRequest(userName: String): Single<List<ContributionDay>>
 
-    fun loadFriends(): Observable<List<Friend>>
+    fun loadFriends(currentId: Long): Observable<List<Friend>>
 
     fun loadFriendByName(friendName: String): Observable<Friend>
 

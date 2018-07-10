@@ -18,6 +18,7 @@ import xyz.laziness.dailycommit.ui.base.view.BaseFragment
 import xyz.laziness.dailycommit.ui.custom.swipe.SwipeController
 import xyz.laziness.dailycommit.ui.modules.main.friends.interactor.FriendsStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.friends.presenter.FriendsStatusPresenter
+import xyz.laziness.dailycommit.ui.modules.main.friends.presenter.FriendsStatusPresenterImpl
 import xyz.laziness.dailycommit.ui.modules.main.view.MainActivity
 import javax.inject.Inject
 
@@ -27,6 +28,8 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
     companion object {
 
         internal const val TAG = "FriendsStatusFragment"
+
+        internal const val PAGE_SIZE: Int = 2
 
         fun getInstance(): FriendsStatusFragment = FriendsStatusFragment()
 
@@ -39,17 +42,20 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
     @Inject
     internal lateinit var friendStatusLayoutManager: LinearLayoutManager
 
+    override var isLoading: Boolean = false
+    private var isLastPage: Boolean = false
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
             inflater.inflate(R.layout.fragment_friends_status, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter.onAttach(this)
+        FriendsStatusPresenterImpl.currentId = 0L
     }
 
     override fun initUI() {
         initFriendsStatusRecyclerView()
-        addOnClickListeners()
         setProgressBar(graphProgress)
 
         presenter.run {
@@ -68,7 +74,10 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
     }
 
     override fun displayFriendContributions(contributions: List<ContributionDay>, friendName: String) {
-        friendStatusAdapter.addContributionToList(contributions, friendName)
+        if (contributions.size >= PAGE_SIZE)
+            friendStatusAdapter.addContributionToList(contributions, friendName)
+        else
+            isLastPage = true
     }
 
     override fun onResponseDeleteFriend(isSuccess: Boolean, pos: Int) {
@@ -77,10 +86,13 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
 
     private fun initFriendsStatusRecyclerView() {
         friendStatusLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        recyclerFriendsStatus.layoutManager = friendStatusLayoutManager
-        recyclerFriendsStatus.adapter = friendStatusAdapter
-        recyclerFriendsStatus.itemAnimator = DefaultItemAnimator()
-        recyclerFriendsStatus.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+        recyclerFriendsStatus.apply {
+            layoutManager = friendStatusLayoutManager
+            adapter = friendStatusAdapter
+            itemAnimator = DefaultItemAnimator()
+            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            addOnScrollListener(getScrollListener())
+        }
 
         context?.run {
             val swipeController = object : SwipeController(this) {
@@ -96,10 +108,25 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
 
     }
 
-    private fun addOnClickListeners() {
-        addFriendLayout.setOnClickListener {
-            val activity = getBaseActivity() as MainActivity
-            activity.showAddFriendDialog()
+    private fun getScrollListener(): RecyclerView.OnScrollListener {
+
+        return object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView?, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val visibleItemCount = friendStatusLayoutManager.childCount
+                val totalItemCount = friendStatusLayoutManager.itemCount
+                val firstVisibleItemPos = friendStatusLayoutManager.findFirstVisibleItemPosition()
+
+                if (!isLoading && !isLastPage) {
+                    if ((visibleItemCount + firstVisibleItemPos) >= totalItemCount
+                            && firstVisibleItemPos >= 0
+                            && totalItemCount >= PAGE_SIZE) {
+                        presenter.doFriendsContributionRequest()
+                    }
+                }
+
+            }
         }
     }
+
 }

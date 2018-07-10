@@ -28,8 +28,8 @@ class FriendsStatusInteractorImpl
     override fun doContributionRequest(userName: String): Single<List<ContributionDay>> =
         apiHelper.doContributionRequest(userName)
 
-    override fun loadFriends(): Observable<List<Friend>> =
-            friendRepo.loadFriends(appPreference.getCurrentUserName())
+    override fun loadFriends(currentId: Long): Observable<List<Friend>> =
+            friendRepo.loadFriends(appPreference.getCurrentUserName(), currentId)
 
     override fun loadFriendByName(friendName: String): Observable<Friend> =
             friendRepo.loadFriendByName(appPreference.getCurrentUserName(), friendName)
