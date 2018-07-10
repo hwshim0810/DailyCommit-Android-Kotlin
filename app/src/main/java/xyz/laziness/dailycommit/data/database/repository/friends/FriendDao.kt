@@ -12,7 +12,7 @@ interface FriendDao {
     @Delete
     fun deleteFriend(friend: Friend)
 
-    @Query("SELECT * FROM friends WHERE user_name = :userName and id > :currentId ORDER BY id LIMIT 2")
+    @Query("SELECT * FROM friends WHERE user_name = :userName and id > :currentId ORDER BY id LIMIT 5")
     fun loadAllFriendsByUsername(userName: String, currentId: Long): List<Friend>
 
     @Query("SELECT * FROM friends WHERE user_name = :userName and friend_name = :friendName")

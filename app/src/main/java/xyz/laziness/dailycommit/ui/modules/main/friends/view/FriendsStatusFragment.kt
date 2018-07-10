@@ -2,7 +2,6 @@ package xyz.laziness.dailycommit.ui.modules.main.friends.view
 
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
-import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.helper.ItemTouchHelper
@@ -20,7 +19,6 @@ import xyz.laziness.dailycommit.ui.custom.swipe.SwipeController
 import xyz.laziness.dailycommit.ui.modules.main.friends.interactor.FriendsStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.friends.presenter.FriendsStatusPresenter
 import xyz.laziness.dailycommit.ui.modules.main.friends.presenter.FriendsStatusPresenterImpl
-import xyz.laziness.dailycommit.ui.modules.main.view.MainActivity
 import javax.inject.Inject
 
 
@@ -30,7 +28,7 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
 
         internal const val TAG = "FriendsStatusFragment"
 
-        internal const val PAGE_SIZE: Int = 2
+        internal const val PAGE_SIZE: Int = 5
 
         fun getInstance(): FriendsStatusFragment = FriendsStatusFragment()
 
