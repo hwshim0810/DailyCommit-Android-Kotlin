@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">DailyCommit</string>
-    <string name="app_scheme">dc</string>
-    <string name="app_login_host">login</string>
 
     <!--Bottom Navigation-->
     <string name="title_profile">Profile</string>
