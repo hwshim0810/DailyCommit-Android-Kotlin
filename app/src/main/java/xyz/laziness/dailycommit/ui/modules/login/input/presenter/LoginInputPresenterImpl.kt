@@ -38,8 +38,9 @@ class LoginInputPresenterImpl<V: LoginInputView, I: LoginInputInteractor>
                                                 if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
                                                     if (it.response.header(GitHubApiConstants.OTP_HEADER, "")?.isNotEmpty() == true) {
                                                         getView()?.showTwoFactorInput()
+                                                    } else {
+                                                        getView()?.showLoginError(AppConstants.LOGIN_FAILURE_ERROR)
                                                     }
-                                                    getView()?.showLoginError(AppConstants.LOGIN_FAILURE_ERROR)
                                                 } else {
                                                     this.onError()
                                                 }
