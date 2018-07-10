@@ -11,7 +11,6 @@ import xyz.laziness.dailycommit.ui.base.view.BaseFragment
 import xyz.laziness.dailycommit.ui.modules.login.input.interactor.LoginInputInteractor
 import xyz.laziness.dailycommit.ui.modules.login.input.presenter.LoginInputPresenter
 import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
-import xyz.laziness.dailycommit.utils.AppConstants
 import xyz.laziness.dailycommit.utils.BundleConstants
 import javax.inject.Inject
 
