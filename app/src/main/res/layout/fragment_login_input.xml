@@ -24,7 +24,7 @@
             android:background="@drawable/input_border_bottom"
             android:cursorVisible="true"
             android:gravity="center|start|bottom"
-            android:hint="@string/email"
+            android:hint="@string/username"
             android:inputType="textEmailAddress"
             android:maxLength="50"
             android:paddingBottom="10dp"
