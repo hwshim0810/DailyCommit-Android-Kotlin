@@ -8,7 +8,7 @@ import xyz.laziness.dailycommit.utils.AppConstants
 
 interface LoginInputInteractor : BaseInteractor {
 
-    fun doServerBasicLoginApiCall(userName: String, password: String): Observable<LoginResponse>
+    fun doServerBasicLoginApiCall(userName: String, password: String, otpCode: String): Observable<LoginResponse>
 
     fun updateLoginInfoInPreference(userName: String, loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod)
 

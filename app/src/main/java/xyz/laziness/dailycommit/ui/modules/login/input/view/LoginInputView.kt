@@ -9,4 +9,6 @@ interface LoginInputView : BaseView {
 
     fun startMainActivity()
 
+    fun showTwoFactorInput()
+
 }

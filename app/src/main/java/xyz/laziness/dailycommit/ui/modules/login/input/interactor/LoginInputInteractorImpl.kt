@@ -12,8 +12,8 @@ import javax.inject.Inject
 class LoginInputInteractorImpl
 @Inject internal constructor(appPreference: BasePreference, apiHelper: GitHubApi): BaseInteractorImpl(appPreference, apiHelper), LoginInputInteractor {
 
-    override fun doServerBasicLoginApiCall(userName: String, password: String): Observable<LoginResponse> =
-        apiHelper.doServerBasicLoginApiCall(userName, password)
+    override fun doServerBasicLoginApiCall(userName: String, password: String, otpCode: String): Observable<LoginResponse> =
+        apiHelper.doServerBasicLoginApiCall(userName, password, otpCode)
 
 
     override fun updateLoginInfoInPreference(userName: String, loginResponse: LoginResponse, loginMethod: AppConstants.LoginMethod) =

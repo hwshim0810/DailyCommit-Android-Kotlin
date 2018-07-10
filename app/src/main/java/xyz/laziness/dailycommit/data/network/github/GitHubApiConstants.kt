@@ -18,4 +18,6 @@ object GitHubApiConstants {
     const val CONTRIBUTION_URL = "$BASE_URL/users/%s/contributions"
 
     const val REQUST_SCOPE = "user,repo"
+
+    const val OTP_HEADER = "X-GitHub-OTP"
 }

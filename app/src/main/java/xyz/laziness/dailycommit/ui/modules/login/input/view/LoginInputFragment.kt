@@ -50,6 +50,11 @@ class LoginInputFragment : BaseFragment(), LoginInputView {
         (getBaseActivity() as? LoginActivity)?.showLoginError(errCode)
     }
 
+    override fun showTwoFactorInput() {
+        Toast.makeText(context, R.string.two_factors_otp_msg, Toast.LENGTH_SHORT).show()
+        inputOTP.visibility = View.VISIBLE
+    }
+
     override fun startMainActivity() {
         val activity = getBaseActivity() as LoginActivity
         activity.run{
@@ -69,7 +74,8 @@ class LoginInputFragment : BaseFragment(), LoginInputView {
         btnLoginSubmit.setOnClickListener {
             presenter.onLoginSubmitClicked(
                     editTextUsername.text.toString(),
-                    if (isBasic) editTextPassword.text.toString() else editTextAccessToken.text.toString()
+                    if (isBasic) editTextPassword.text.toString() else editTextAccessToken.text.toString(),
+                    editTextOTP.text.toString()
             )
         }
     }

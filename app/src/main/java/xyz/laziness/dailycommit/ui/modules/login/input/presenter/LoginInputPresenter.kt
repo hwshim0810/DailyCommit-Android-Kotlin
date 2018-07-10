@@ -7,6 +7,6 @@ import xyz.laziness.dailycommit.ui.modules.login.input.view.LoginInputView
 
 interface LoginInputPresenter<V: LoginInputView, I: LoginInputInteractor> : BasePresenter<V, I> {
 
-    fun onLoginSubmitClicked(userName: String, secretKey: String)
+    fun onLoginSubmitClicked(userName: String, secretKey: String, otpCode: String)
 
 }

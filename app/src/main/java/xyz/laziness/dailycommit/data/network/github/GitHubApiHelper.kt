@@ -1,6 +1,5 @@
 package xyz.laziness.dailycommit.data.network.github
 
-import com.androidnetworking.interceptors.HttpLoggingInterceptor
 import com.github.florent37.rxjsoup.RxJsoup
 import com.rx2androidnetworking.Rx2AndroidNetworking
 import io.reactivex.Observable
@@ -20,14 +19,19 @@ import javax.inject.Inject
 
 class GitHubApiHelper @Inject constructor() : GitHubApi {
 
-    override fun doServerBasicLoginApiCall(userName: String, password: String): Observable<LoginResponse> =
-            Rx2AndroidNetworking.post(GitHubApiConstants.REST_LOGIN_URL)
-                    .addApplicationJsonBody(LoginRequest.BasicLoginRequest())
-                    .setOkHttpClient(OkHttpClient.Builder()
-                            .addInterceptor(GitHubInterceptor(Credentials.basic(userName, password)))
-                            .build())
-                    .build()
-                    .getObjectObservable(LoginResponse::class.java)
+    override fun doServerBasicLoginApiCall(userName: String, password: String, otpCode: String): Observable<LoginResponse> {
+        val request = Rx2AndroidNetworking.post(GitHubApiConstants.REST_LOGIN_URL)
+                .addApplicationJsonBody(LoginRequest.BasicLoginRequest())
+                .setOkHttpClient(OkHttpClient.Builder()
+                        .addInterceptor(GitHubInterceptor(Credentials.basic(userName, password)))
+                        .build())
+
+        if (otpCode.isNotEmpty())
+            request.addHeaders(GitHubApiConstants.OTP_HEADER, otpCode)
+
+        return request.build()
+                .getObjectObservable(LoginResponse::class.java)
+    }
 
     override fun doUserInfoApiCall(token: String): Observable<UserInfoResponse> =
             Rx2AndroidNetworking.get(GitHubApiConstants.USER_INFO_URL)

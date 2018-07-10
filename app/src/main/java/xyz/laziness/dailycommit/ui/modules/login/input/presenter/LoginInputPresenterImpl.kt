@@ -2,6 +2,7 @@ package xyz.laziness.dailycommit.ui.modules.login.input.presenter
 
 import com.androidnetworking.error.ANError
 import io.reactivex.disposables.CompositeDisposable
+import xyz.laziness.dailycommit.data.network.github.GitHubApiConstants
 import xyz.laziness.dailycommit.data.network.github.response.LoginResponse
 import xyz.laziness.dailycommit.ui.base.presenter.BasePresenterImpl
 import xyz.laziness.dailycommit.ui.modules.login.input.interactor.LoginInputInteractor
@@ -19,7 +20,7 @@ class LoginInputPresenterImpl<V: LoginInputView, I: LoginInputInteractor>
         BasePresenterImpl<V, I>(interactor = interactor, schedulerHelper = schedulerHelper, compositeDisposable = disposable),
         LoginInputPresenter<V, I> {
 
-    override fun onLoginSubmitClicked(userName: String, secretKey: String) {
+    override fun onLoginSubmitClicked(userName: String, secretKey: String, otpCode: String) {
 
         when {
             userName.isEmpty() -> getView()?.showLoginError(AppConstants.EMPTY_USERNAME_ERROR)
@@ -27,17 +28,24 @@ class LoginInputPresenterImpl<V: LoginInputView, I: LoginInputInteractor>
             else -> {
                 interactor?.let {
                     compositeDisposable.add(
-                                it.doServerBasicLoginApiCall(userName, secretKey)
+                                it.doServerBasicLoginApiCall(userName, secretKey, otpCode)
                                         .compose(schedulerHelper.ioToMainObservableScheduler())
                                         .subscribe({ response ->
                                             updateLoginInfoInPreference(userName, response, AppConstants.LoginMethod.BASIC)
                                             getView()?.startMainActivity()
                                         }, {
-                                            it as ANError
-                                            if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED)
-                                                getView()?.showLoginError(AppConstants.LOGIN_FAILURE_ERROR)
-                                            else
+                                            if (it is ANError) {
+                                                if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED) {
+                                                    if (it.response.header(GitHubApiConstants.OTP_HEADER, "")?.isNotEmpty() == true) {
+                                                        getView()?.showTwoFactorInput()
+                                                    }
+                                                    getView()?.showLoginError(AppConstants.LOGIN_FAILURE_ERROR)
+                                                } else {
+                                                    this.onError()
+                                                }
+                                            } else {
                                                 this.onError()
+                                            }
                                         })
                     )
                 }
