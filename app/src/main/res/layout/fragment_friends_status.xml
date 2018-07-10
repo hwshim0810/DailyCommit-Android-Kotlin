@@ -60,29 +60,4 @@
         android:orientation="vertical"
         tools:listitem="@layout/item_friends_status" />
 
-    <LinearLayout
-        android:id="@+id/addFriendLayout"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="@dimen/space_s"
-        android:background="@drawable/bg_dotted_border_box"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_outline_person_add_gray_32px"
-            android:contentDescription="@string/add_friend" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:text="@string/add_more_friend"
-            android:textAlignment="center"
-            android:textSize="16sp" />
-
-    </LinearLayout>
-
 </LinearLayout>

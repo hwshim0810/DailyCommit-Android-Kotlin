@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.fragment_friends_status.*
 import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.data.network.github.data.ContributionDay
 import xyz.laziness.dailycommit.ui.base.view.BaseFragment
+import xyz.laziness.dailycommit.ui.custom.RecyclerItemDivider
 import xyz.laziness.dailycommit.ui.custom.swipe.SwipeController
 import xyz.laziness.dailycommit.ui.modules.main.friends.interactor.FriendsStatusInteractor
 import xyz.laziness.dailycommit.ui.modules.main.friends.presenter.FriendsStatusPresenter
@@ -90,7 +91,7 @@ class FriendsStatusFragment : BaseFragment(), FriendsStatusView {
             layoutManager = friendStatusLayoutManager
             adapter = friendStatusAdapter
             itemAnimator = DefaultItemAnimator()
-            addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.VERTICAL))
+            addItemDecoration(RecyclerItemDivider(24))
             addOnScrollListener(getScrollListener())
         }
 
