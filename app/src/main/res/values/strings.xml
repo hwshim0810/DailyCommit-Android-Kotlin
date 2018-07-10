@@ -23,7 +23,7 @@
     <string name="ok">OK</string>
     <string name="cancel">@android:string/cancel</string>
     <string name="add_success_msg">Successfully Add</string>
-    <string name="user_add_fail_msg">I\'m your best friend</string>
+    <string name="user_add_fail_msg">I\'m your best friend😊</string>
     <string name="remove_friend">Remove follower</string>
     <string name="confirm_remove_msg">Remove follower from list?</string>
 
