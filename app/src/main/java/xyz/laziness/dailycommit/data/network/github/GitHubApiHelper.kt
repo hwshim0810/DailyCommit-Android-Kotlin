@@ -25,7 +25,6 @@ class GitHubApiHelper @Inject constructor() : GitHubApi {
                     .addApplicationJsonBody(LoginRequest.BasicLoginRequest())
                     .setOkHttpClient(OkHttpClient.Builder()
                             .addInterceptor(GitHubInterceptor(Credentials.basic(userName, password)))
-                            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
                             .build())
                     .build()
                     .getObjectObservable(LoginResponse::class.java)
@@ -33,9 +32,6 @@ class GitHubApiHelper @Inject constructor() : GitHubApi {
     override fun doUserInfoApiCall(token: String): Observable<UserInfoResponse> =
             Rx2AndroidNetworking.get(GitHubApiConstants.USER_INFO_URL)
                     .addHeaders("Authorization", "token $token")
-                    .setOkHttpClient(OkHttpClient.Builder()
-                            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                            .build())
                     .build()
                     .getObjectObservable(UserInfoResponse::class.java)
 
@@ -51,9 +47,6 @@ class GitHubApiHelper @Inject constructor() : GitHubApi {
 
     override fun doPublicUserInfoApiCall(userName: String): Observable<UserInfoResponse> =
             Rx2AndroidNetworking.get(GitHubApiConstants.PUBLIC_USER_INFO_URL.format(userName))
-                    .setOkHttpClient(OkHttpClient.Builder()
-                            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                            .build())
                     .build()
                     .getObjectObservable(UserInfoResponse::class.java)
 
@@ -61,9 +54,6 @@ class GitHubApiHelper @Inject constructor() : GitHubApi {
             Rx2AndroidNetworking.post(GitHubApiConstants.OAUTH_LOGIN_URL)
                     .addApplicationJsonBody(LoginRequest.OauthLoginRequest(code = code))
                     .addHeaders("Accept", "application/json")
-                    .setOkHttpClient(OkHttpClient.Builder()
-                            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
-                            .build())
                     .build()
                     .getObjectSingle(OauthTokenResponse::class.java)
 }
