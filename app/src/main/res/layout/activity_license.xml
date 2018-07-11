@@ -248,6 +248,31 @@
             android:layout_height="wrap_content"
             android:text="@string/apache_license" />
 
+        <!--MVP-Architecture-->
+        <TextView
+            style="@style/LicenseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MVP-Architecture"/>
+
+        <TextView
+            style="@style/LicenseContent.Link"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="https://github.com/MindorksOpenSource/android-kotlin-mvp-architecture" />
+
+        <TextView
+            style="@style/LicenseContent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Copyright (C) 2017 MINDORKS NEXTGEN PRIVATE LIMITED" />
+
+        <TextView
+            style="@style/LicenseContent.Tail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/apache_license" />
+
 
     </LinearLayout>
 
