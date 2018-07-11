@@ -5,13 +5,11 @@ import android.os.Bundle
 import android.support.annotation.IdRes
 import android.support.annotation.StringRes
 import android.support.v7.app.AppCompatActivity
-import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import android.widget.Toast
 import dagger.android.AndroidInjection
 import xyz.laziness.dailycommit.R
-import xyz.laziness.dailycommit.data.preference.AppPreference
 import xyz.laziness.dailycommit.data.preference.BasePreference
 import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
 import xyz.laziness.dailycommit.utils.AppConstants
@@ -28,7 +26,6 @@ abstract class BaseActivity : AppCompatActivity(), BaseView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         injection()
-        Log.d("EE", appPreference.getCurrentUserName())
     }
 
     private fun injection() = AndroidInjection.inject(this)
