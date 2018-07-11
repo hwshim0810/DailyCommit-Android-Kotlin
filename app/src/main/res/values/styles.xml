@@ -39,11 +39,15 @@
         <item name="android:colorButtonNormal">@color/level_three</item>
         <item name="android:textColor">@color/white</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:paddingTop">@dimen/space_s</item>
+        <item name="android:paddingBottom">@dimen/space_s</item>
     </style>
 
     <style name="AppTheme.GrayAppButton">
         <item name="android:colorButtonNormal">@color/level_zero</item>
         <item name="android:textSize">18sp</item>
+        <item name="android:paddingTop">@dimen/space_s</item>
+        <item name="android:paddingBottom">@dimen/space_s</item>
     </style>
 
     <style name="AppTheme.GreenRipple">
