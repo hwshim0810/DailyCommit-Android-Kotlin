@@ -45,6 +45,10 @@ android {
             implementation 'com.crashlytics.sdk.android:crashlytics:2.9.4'
         }
     }
+
+    lintOptions {
+        abortOnError false
+    }
 }
 
 ext {
