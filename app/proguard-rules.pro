@@ -33,3 +33,9 @@
 -keep public class org.jsoup.** {
     public *;
 }
+
+# Dagger
+-dontwarn com.google.errorprone.annotations.**
+
+# SVGImageView
+-dontwarn com.caverock.androidsvg.**
