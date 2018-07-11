@@ -16,7 +16,7 @@ class SplashPresenterImpl<V: SplashView, I: SplashInteractor>
         BasePresenterImpl<V, I>(interactor = interactor, schedulerHelper = schedulerHelper, compositeDisposable = disposable),
         SplashPresenter<V, I> {
 
-    private val timeOut = 1500L
+    private val timeOut = 1000L
 
     override fun onAttach(view: V?) {
         super.onAttach(view)
