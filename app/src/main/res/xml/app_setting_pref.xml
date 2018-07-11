@@ -14,4 +14,12 @@
 
     </PreferenceCategory>
 
+    <PreferenceScreen
+        android:title="@string/open_license">
+
+        <intent
+            android:action="xyz.laziness.dailycommit.LICENSE" />
+
+    </PreferenceScreen>
+
 </PreferenceScreen>

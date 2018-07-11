@@ -68,4 +68,23 @@
         <item name="contentPadding">@dimen/space_xs</item>
     </style>
 
+    <!--License-->
+    <style name="LicenseTitle">
+        <item name="android:textColor">@color/light_black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="LicenseContent">
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
+
+    <style name="LicenseContent.Link">
+        <item name="android:autoLink">web</item>
+    </style>
+
+    <style name="LicenseContent.Tail">
+        <item name="android:layout_marginBottom">@dimen/space_s</item>
+    </style>
+
 </resources>

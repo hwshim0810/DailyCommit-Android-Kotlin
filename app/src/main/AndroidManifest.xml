@@ -40,7 +40,16 @@
                     android:host="@string/app_login_host" />
             </intent-filter>
         </activity>
-        
+
+        <activity
+            android:name=".ui.modules.main.settings.view.LicenseActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="xyz.laziness.dailycommit.LICENSE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <receiver
             android:label="@string/normal_graph_label"
             android:name=".widget.receiver.WidgetReceiver"
