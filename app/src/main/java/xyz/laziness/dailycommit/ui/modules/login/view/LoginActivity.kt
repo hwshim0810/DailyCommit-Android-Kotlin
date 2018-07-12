@@ -8,6 +8,7 @@ import android.widget.Toast
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
+import kotlinx.android.synthetic.main.activity_login.*
 import xyz.laziness.dailycommit.R
 import xyz.laziness.dailycommit.ui.base.view.BaseActivity
 import xyz.laziness.dailycommit.ui.modules.login.choice.view.LoginChoiceFragment
@@ -38,6 +39,7 @@ class LoginActivity : BaseActivity(), LoginView, HasSupportFragmentInjector {
 
         setContentView(R.layout.activity_login)
         presenter.onAttach(this)
+        initRandomWelcomeMessage()
     }
 
     override fun onDestroy() {
@@ -110,6 +112,11 @@ class LoginActivity : BaseActivity(), LoginView, HasSupportFragmentInjector {
         super.onResume()
         presenter.onHandleOauthIntent(intent)
         intent = null
+    }
+
+    private fun initRandomWelcomeMessage() {
+        val textList = resources.getStringArray(R.array.welcome_items)
+        textViewRandomMsg.text = textList[(0 until textList.size).shuffled().last()]
     }
 
 }
