@@ -50,7 +50,6 @@ class LoginPresenterImpl<V: LoginView, I: LoginInteractor>
                                 getView()?.startMainActivity()
                             }, {
                                 it as ANError
-                                Log.d("EE", it.message)
                                 if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED)
                                     getView()?.showLoginError(AppConstants.LOGIN_FAILURE_ERROR)
                                 else
