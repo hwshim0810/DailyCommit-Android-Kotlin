@@ -40,6 +40,15 @@
             android:text="@string/welcome_msg"
             android:textAllCaps="true" />
 
+        <TextView
+            android:id="@+id/textViewRandomMsg"
+            style="@style/TextStyle.SubHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textViewLoginTitle"
+            android:layout_marginTop="@dimen/space_m"
+            android:layout_marginStart="12dp" />
+
     </RelativeLayout>
 
     <FrameLayout

@@ -29,6 +29,12 @@
         <item name="android:textSize">22sp</item>
         <item name="android:textColor">@color/white</item>
     </style>
+
+    <style name="TextStyle.SubHeading" parent="TextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">italic</item>
+    </style>
     
     <style name="TextStyle.WidgetLogin" parent="TextStyle">
         <item name="android:textSize">18sp</item>
