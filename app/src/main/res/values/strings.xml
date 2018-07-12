@@ -30,6 +30,13 @@
 
     <!--Login Activity-->
     <string name="welcome_msg">Welcome to DailyCommit!</string>
+    <string-array name="welcome_items">
+        <item>\"Don\'t put off your daily commit till tomorrow!\"</item>
+        <item>\"Just one more line…\"</item>
+        <item>\"There is no more gray box\"</item>
+        <item>\"Blank, Do you think that is enough?\"</item>
+        <item>\"Why don\'t you commit?\"</item>
+    </string-array>
 
     <!--Login Fragment-->
     <string name="basic_login">Basic Authentication</string>

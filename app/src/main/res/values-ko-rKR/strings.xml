@@ -27,7 +27,14 @@
     <string name="confirm_remove_msg">친구 목록에서 삭제하시겠습니까?</string>
 
     <!--Login Activity-->
-    <string name="welcome_msg">DailyCommit으로 푸른세상을 만들어보아요!</string>
+    <string name="welcome_msg">DailyCommit에 오신것을 환영합니다!</string>
+    <string-array name="welcome_items">
+        <item>"오늘의 커밋을 내일로 미루지말자!"</item>
+        <item>"한줄만 더…"</item>
+        <item>"회색 상자는 이제 그만!"</item>
+        <item>"빈칸, 아쉽지 않아?"</item>
+        <item>"오늘도 커밋해야지?"</item>
+    </string-array>
 
     <!--Login Fragment-->
     <string name="basic_login">기본 인증</string>
