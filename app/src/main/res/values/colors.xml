@@ -3,4 +3,20 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="deepRed">#af0a0f</color>
+    <color name="white">#FFF</color>
+    <color name="gray">#7E7E7E</color>
+    <color name="light_gray">#DBDBDB</color>
+    <color name="shining_gray">#F7F7F7</color>
+    <color name="light_black">#2A2A2A</color>
+
+    <color name="shadow">#D0D8DC</color>
+
+    <!--App Color Theme-->
+    <color name="level_zero">#EBEDF0</color>
+    <color name="level_one">#C6E48B</color>
+    <color name="level_two">#7BC96F</color>
+    <color name="level_three">#239A3B</color>
+    <color name="level_four">#196127</color>
+    <color name="neutral_color">#1CA67D</color>
 </resources>

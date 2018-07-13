@@ -1,11 +1,100 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="colorPrimary">@color/level_three</item>
+        <item name="colorPrimaryDark">@color/neutral_color</item>
+        <item name="colorAccent">@color/level_four</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    </style>
+
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="colorPrimaryDark">@color/neutral_color</item>
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowBackground">@drawable/layer_splash_activity</item>
+    </style>
+
+    <style name="TextStyle">
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginBottom">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:textColor">@color/light_black</item>
+    </style>
+
+    <style name="TextStyle.Heading" parent="TextStyle">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="TextStyle.SubHeading" parent="TextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+    
+    <style name="TextStyle.WidgetLogin" parent="TextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="AppTheme.AppButton" parent="AppTheme.GreenRipple">
+        <item name="android:colorButtonNormal">@color/level_three</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingTop">@dimen/space_s</item>
+        <item name="android:paddingBottom">@dimen/space_s</item>
+    </style>
+
+    <style name="AppTheme.GrayAppButton">
+        <item name="android:colorButtonNormal">@color/level_zero</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingTop">@dimen/space_s</item>
+        <item name="android:paddingBottom">@dimen/space_s</item>
+    </style>
+
+    <style name="AppTheme.GreenRipple">
+        <item name="android:colorControlHighlight">@color/level_four</item>
+    </style>
+
+    <!--Friend Status-->
+    <style name="TextStyle.StatusHeading" parent="TextStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:textColor">@color/light_black</item>
+    </style>
+
+    <style name="TextStyle.StatusName" parent="TextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingStart">5dp</item>
+        <item name="android:textColor">@color/light_black</item>
+    </style>
+
+    <style name="GraphCardItem">
+        <item name="cardCornerRadius">@dimen/space_xs</item>
+        <item name="contentPadding">@dimen/space_xs</item>
+    </style>
+
+    <!--License-->
+    <style name="LicenseTitle">
+        <item name="android:textColor">@color/light_black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="LicenseContent">
+        <item name="android:layout_marginStart">10dp</item>
+    </style>
+
+    <style name="LicenseContent.Link">
+        <item name="android:autoLink">web</item>
+    </style>
+
+    <style name="LicenseContent.Tail">
+        <item name="android:layout_marginBottom">@dimen/space_s</item>
     </style>
 
 </resources>

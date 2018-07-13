@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">DailyCommit</string>
+
+    <!--Bottom Navigation-->
+    <string name="title_profile">Profile</string>
+    <string name="title_friends">Followers</string>
+    <string name="title_settings">Settings</string>
+
+    <!--Drawer Menu-->
+    <string name="logout">로그아웃</string>
+
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="access_token">AccessToken</string>
+    <string name="otp_code">OTP-Code</string>
+
+    <!--Toolbar Menu-->
+    <string name="add_friend">친구 추가</string>
+
+    <!--Dialog-->
+    <string name="ok">확인</string>
+    <string name="cancel">@android:string/cancel</string>
+    <string name="add_success_msg">추가되었습니다!</string>
+    <string name="user_add_fail_msg">나는 나의 최고의 친구입니다😊</string>
+    <string name="remove_friend">친구삭제</string>
+    <string name="confirm_remove_msg">친구 목록에서 삭제하시겠습니까?</string>
+
+    <!--Login Activity-->
+    <string name="welcome_msg">DailyCommit에 오신 것을\n환영합니다.</string>
+    <string-array name="welcome_items">
+        <item>\"오늘의 커밋을 내일로 미루지말자!\"</item>
+        <item>\"한줄만 더…\"</item>
+        <item>\"회색 상자는 이제 그만!\"</item>
+        <item>\"빈칸, 아쉽지 않아?\"</item>
+        <item>\"오늘도 커밋해야지?\"</item>
+    </string-array>
+
+    <!--Login Fragment-->
+    <string name="basic_login">기본 인증</string>
+    <string name="token_login">토큰 인증</string>
+    <string name="browser_login">브라우저로 로그인</string>
+    <string name="submit">제출</string>
+
+    <!--Friend Status-->
+    <string name="my_contributions">My Contributions</string>
+    <string name="friend_contributions">Follower\'s Contributions</string>
+
+    <string name="drawer_open">Open drawer</string>
+    <string name="drawer_close">Close drawer</string>
+
+    <!--Image Descriptions-->
+    <string name="avatar_description">유저 아바타 이미지</string>
+    <string name="graph_widget_description">유저 그래프</string>
+    <string name="login_widget_image_description">로그인 위젯 배경</string>
+    <string name="user_description">유저 이미지</string>
+    <string name="visible_description">표시</string>
+    <string name="logo_description">로고</string>
+
+    <!--Widget-->
+    <string name="login">로그인</string>
+    <string name="login_required_msg">로그인 후 이용해주세요!</string>
+    <string name="normal_graph_label">GITHUB GRAPH</string>
+
+    <!--Toast Messages-->
+    <string name="empty_username_msg">유저명을 입력해주세요!</string>
+    <string name="empty_token_msg">토큰을 입력해주세요!</string>
+    <string name="empty_password_msg">암호를 입력해주세요!</string>
+    <string name="invalid_email_msg">올바른 E-mail을 입력해주세요!</string>
+    <string name="login_failure_msg">로그인을 실패했습니다.</string>
+    <string name="back_pressed_msg">다시 한번 누르면 종료합니다</string>
+    <string name="back_pressed_error_msg">나가기 실패</string>
+    <string name="unknown_error_msg">알 수 없는 에러입니다 :(</string>
+    <string name="invalid_token_msg">잘못된 인증토큰입니다!</string>
+    <string name="two_factors_otp_msg">이중인증 OTP 코드가 필요합니다</string>
+
+    <!--App Setting-->
+    <string name="open_license">오픈소스 라이선스</string>
+    <string name="pref_theme">Theme</string>
+    <string name="item_block_color">Graph BlockColor</string>
+    <string-array name="block_color">
+        <item>DEFAULTS</item>
+        <item>CLASSIC</item>
+        <item>OKINAWA BLUE</item>
+        <item>VELVET</item>
+        <item>BLOOD ORANGE</item>
+        <item>DEEP DARK</item>
+    </string-array>
+
+</resources>

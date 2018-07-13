@@ -19,3 +19,23 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+
+# Glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+
+# Jsoup
+-keep public class org.jsoup.** {
+    public *;
+}
+
+# Dagger
+-dontwarn com.google.errorprone.annotations.**
+
+# SVGImageView
+-dontwarn com.caverock.androidsvg.**

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnBasicLogin"
+        android:theme="@style/AppTheme.AppButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/basic_login" />
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnBrowserLogin"
+        android:theme="@style/AppTheme.GrayAppButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:drawableStart="@drawable/ic_github_24px"
+        android:text="@string/browser_login" />
+
+</LinearLayout>

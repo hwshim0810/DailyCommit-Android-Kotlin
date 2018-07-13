@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/level_zero"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:drawableStart="@drawable/ic_outline_portrait_24px"
+        android:drawablePadding="@dimen/space_xs"
+        style="@style/TextStyle.StatusHeading"
+        android:gravity="center_vertical"
+        android:text="@string/my_contributions"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/GraphCardItem">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <xyz.laziness.dailycommit.ui.custom.GitHubGraphView
+                android:id="@+id/myContributionsView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="100dp"/>
+
+            <ProgressBar
+                android:id="@+id/graphProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_gravity="center" />
+
+        </FrameLayout>
+
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:drawableStart="@drawable/ic_outline_portrait_24px"
+        android:drawablePadding="@dimen/space_xs"
+        style="@style/TextStyle.StatusHeading"
+        android:text="@string/friend_contributions"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerFriendsStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:listitem="@layout/item_friends_status" />
+
+</LinearLayout>

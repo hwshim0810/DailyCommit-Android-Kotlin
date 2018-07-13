@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:orientation="vertical">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColorHint="@color/level_four">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextUsername"
+            style="@style/TextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/input_border_bottom"
+            android:cursorVisible="true"
+            android:gravity="center|start|bottom"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:maxLength="50"
+            android:lines="1"
+            android:focusableInTouchMode="true"
+            android:paddingBottom="15dp"
+            android:textColor="@color/light_black"
+            android:textSize="18sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:hint="@string/password"
+        android:textColorHint="@color/level_four"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextPassword"
+            style="@style/TextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/input_border_bottom"
+            android:cursorVisible="true"
+            android:gravity="center|start|bottom"
+            android:inputType="textPassword"
+            android:maxLength="50"
+            android:lines="1"
+            android:paddingBottom="15dp"
+            android:textColor="@color/light_black"
+            android:textSize="18sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputOTP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:hint="@string/otp_code"
+        android:textColorHint="@color/level_four"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/editTextOTP"
+            style="@style/TextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/input_border_bottom"
+            android:cursorVisible="true"
+            android:gravity="center|start|bottom"
+            android:inputType="number"
+            android:maxLength="20"
+            android:lines="1"
+            android:paddingBottom="20dp"
+            android:textColor="@color/light_black"
+            android:textSize="18sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/inputAccessToken"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:hint="@string/access_token"
+        android:textColorHint="@color/level_four"
+        app:passwordToggleEnabled="true">
+
+        <android.support.design.widget.TextInputEditText
+            style="@style/TextStyle"
+            android:id="@+id/editTextAccessToken"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/input_border_bottom"
+            android:cursorVisible="true"
+            android:gravity="center|start|bottom"
+            android:inputType="textPassword"
+            android:maxLength="50"
+            android:lines="1"
+            android:paddingBottom="15dp"
+            android:textColor="@color/light_black"
+            android:textSize="18sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btnLoginSubmit"
+        android:theme="@style/AppTheme.AppButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:text="@string/submit" />
+
+</LinearLayout>

@@ -1,6 +1,97 @@
 <resources>
     <string name="app_name">DailyCommit</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_scheme">dc</string>
+    <string name="app_login_host">login</string>
+
+    <!--Bottom Navigation-->
+    <string name="title_profile">Profile</string>
+    <string name="title_friends">Followers</string>
+    <string name="title_settings">Settings</string>
+
+    <!--Drawer Menu-->
+    <string name="logout">Logout</string>
+
+    <string name="email">Email</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="access_token">AccessToken</string>
+    <string name="otp_code">OTP-Code</string>
+
+    <!--Toolbar Menu-->
+    <string name="add_friend">Add Follower</string>
+
+    <!--Dialog-->
+    <string name="ok">OK</string>
+    <string name="cancel">@android:string/cancel</string>
+    <string name="add_success_msg">Successfully Add</string>
+    <string name="user_add_fail_msg">I\'m your best friend😊</string>
+    <string name="remove_friend">Remove follower</string>
+    <string name="confirm_remove_msg">Remove follower from list?</string>
+
+    <!--Login Activity-->
+    <string name="welcome_msg">Welcome to DailyCommit!</string>
+    <string-array name="welcome_items">
+        <item>\"Don\'t put off your daily commit till tomorrow!\"</item>
+        <item>\"Just one more line…\"</item>
+        <item>\"There is no more gray box\"</item>
+        <item>\"Blank, Do you think that is enough?\"</item>
+        <item>\"Why don\'t you commit?\"</item>
+    </string-array>
+
+    <!--Login Fragment-->
+    <string name="basic_login">Basic Authentication</string>
+    <string name="token_login">AccessToken Authentication</string>
+    <string name="browser_login">Login to Browser</string>
+    <string name="submit">Submit</string>
+
+    <!--Friend Status-->
+    <string name="my_contributions">My Contributions</string>
+    <string name="friend_contributions">Follower\'s Contributions</string>
+
+    <string name="drawer_open">Open drawer</string>
+    <string name="drawer_close">Close drawer</string>
+
+    <!--Image Descriptions-->
+    <string name="avatar_description">User AvatarImage</string>
+    <string name="graph_widget_description">User Contribution graph</string>
+    <string name="login_widget_image_description">Login Widget background</string>
+    <string name="user_description">User Image</string>
+    <string name="visible_description">Visible</string>
+    <string name="logo_description">Logo Image</string>
+
+    <!--Widget-->
+    <string name="login">LOGIN</string>
+    <string name="login_required_msg">Login to DailyCommit!</string>
+    <string name="normal_graph_label">GITHUB GRAPH</string>
+
+    <!--Toast Messages-->
+    <string name="empty_username_msg">Please enter your Username!</string>
+    <string name="empty_token_msg">Please enter your AccessToken!</string>
+    <string name="empty_password_msg">Please enter your Password!</string>
+    <string name="invalid_email_msg">Please Enter a valid E-mail!</string>
+    <string name="login_failure_msg">Login failed!</string>
+    <string name="back_pressed_msg">Press once again to exit</string>
+    <string name="back_pressed_error_msg">Exit failed!</string>
+    <string name="unknown_error_msg">Unknown error :(</string>
+    <string name="invalid_token_msg">Invalid Token!</string>
+    <string name="two_factors_otp_msg">Two factors OTP is required</string>
+
+    <!--App Setting-->
+    <string name="open_license">Open Source License</string>
+    <string name="pref_theme">Theme</string>
+    <string name="about">About</string>
+    <string name="item_block_color">Graph BlockColor</string>
+    <string-array name="block_color">
+        <item>DEFAULTS</item>
+        <item>CLASSIC</item>
+        <item>OKINAWA BLUE</item>
+        <item>VELVET</item>
+        <item>BLOOD ORANGE</item>
+        <item>DEEP DARK</item>
+    </string-array>
+    
+    <!--License-->
+    <string name="apache_license">Apache License 2.0</string>
+    <string name="mit_license">MIT license</string>
+
 </resources>
