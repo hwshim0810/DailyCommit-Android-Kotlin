@@ -29,11 +29,11 @@
     <!--Login Activity-->
     <string name="welcome_msg">DailyCommit에 오신것을 환영합니다!</string>
     <string-array name="welcome_items">
-        <item>"오늘의 커밋을 내일로 미루지말자!"</item>
-        <item>"한줄만 더…"</item>
-        <item>"회색 상자는 이제 그만!"</item>
-        <item>"빈칸, 아쉽지 않아?"</item>
-        <item>"오늘도 커밋해야지?"</item>
+        <item>\"오늘의 커밋을 내일로 미루지말자!\"</item>
+        <item>\"한줄만 더…\"</item>
+        <item>\"회색 상자는 이제 그만!\"</item>
+        <item>\"빈칸, 아쉽지 않아?\"</item>
+        <item>\"오늘도 커밋해야지?\"</item>
     </string-array>
 
     <!--Login Fragment-->
