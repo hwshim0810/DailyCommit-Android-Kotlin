@@ -1,7 +1,12 @@
 # DailyCommit
 > 🌏Find DailyCommit at Google PlayStore!  
-> 🌏PlayStore 에서 DailyCommit 을 찾아주세요!
-[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+> 🌏PlayStore 에서 DailyCommit 을 찾아주세요!  
+---
+[![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)  
+
+[<img src="https://github.com/hwshim0810/DailyCommit-Android-Kotlin/blob/master/ext_assets/markets/google_play.png?raw=true"
+      height="70"
+      alt="Download from GooglePlayStore">](https://play.google.com/store/apps/details?id=xyz.laziness.dailycommit)
 
 
 ### Screenshots
