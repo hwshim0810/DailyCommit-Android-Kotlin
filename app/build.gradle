@@ -19,8 +19,8 @@ android {
         applicationId "xyz.laziness.dailycommit"
         minSdkVersion 23
         targetSdkVersion 27
-        versionCode 1
-        versionName "1.00"
+        versionCode 101
+        versionName "1.01"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
         buildConfigField("String", "GITHUB_APP_ID", LOCAL_PROPERTIES("github_app_id"))
