@@ -8,6 +8,7 @@
 | Login | Profile |
 |:-:|:-:|
 |![Login](https://github.com/hwshim0810/DailyCommit-Android-Kotlin/blob/master/ext_assets/screenshots/shot-login.png?raw=true)|![Profile](https://github.com/hwshim0810/DailyCommit-Android-Kotlin/blob/master/ext_assets/screenshots/shot-profile.png?raw=true) |
+
 | Followers | Colors |
 |:-:|:-:|
 |![Friends](https://github.com/hwshim0810/DailyCommit-Android-Kotlin/blob/master/ext_assets/screenshots/shot-followers.png?raw=true) |![Colors](https://github.com/hwshim0810/DailyCommit-Android-Kotlin/blob/master/ext_assets/screenshots/shot-color.png?raw=true) |
