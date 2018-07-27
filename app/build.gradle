@@ -8,10 +8,16 @@ apply plugin: 'kotlin-kapt'
 
 apply plugin: 'io.fabric'
 
-Properties localProperties = new Properties()
-localProperties.load(rootProject.file('local.properties').newDataInputStream())
+apply plugin: 'com.novoda.build-properties'
 
-def LOCAL_PROPERTIES = { key -> "${localProperties.get(key)}"}
+buildProperties {
+    prod {
+        file rootProject.file('gradle-prod.properties')
+    }
+    dev {
+        file rootProject.file('gradle.properties')
+    }
+}
 
 android {
     compileSdkVersion 27
@@ -23,8 +29,8 @@ android {
         versionName "1.01"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        buildConfigField("String", "GITHUB_APP_ID", LOCAL_PROPERTIES("github_app_id"))
-        buildConfigField("String", "GITHUB_APP_SECRET", LOCAL_PROPERTIES("github_app_secret"))
+        buildConfigString "GITHUB_APP_ID", (buildProperties.prod['githubAppId'] | buildProperties.dev['githubAppId']).string
+        buildConfigString "GITHUB_APP_SECRET", (buildProperties.prod['githubAppSecret'] | buildProperties.dev['githubAppSecret']).string
     }
     buildTypes {
 
