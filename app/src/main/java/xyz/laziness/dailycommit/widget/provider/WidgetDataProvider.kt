@@ -35,7 +35,8 @@ class WidgetDataProvider
                     .sourceEncoder(StreamEncoder())
                     .cacheDecoder(FileToStreamDecoder<SVG>(SvgDecoder()))
                     .decoder(SvgDecoder())
-                    .diskCacheStrategy(DiskCacheStrategy.SOURCE)
+                    .diskCacheStrategy(DiskCacheStrategy.NONE)
+                    .skipMemoryCache(true)
                     .load(Uri.parse(GitHubApiConstants.CONTRIBUTION_URL.format(userName)))
 
 }
