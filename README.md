@@ -1,7 +1,8 @@
 # DailyCommit
 > 🌏Find DailyCommit at Google PlayStore!  
-> 🌏PlayStore 에서 DailyCommit 을 찾아주세요!
+> 🌏PlayStore 에서 DailyCommit 을 찾아주세요!  
 [![License: GPL v3](https://img.shields.io/badge/License-GPL%20v3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Build Process](https://travis-ci.org/hwshim0810/DailyCommit-Android-Kotlin.svg?branch=master)](https://travis-ci.org/hwshim0810/DailyCommit-Android-Kotlin/)
 
 
 ### Screenshots
