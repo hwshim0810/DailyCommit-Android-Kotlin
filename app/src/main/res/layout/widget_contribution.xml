@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<ImageView
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/myContributionsWidgetView"
+    android:id="@+id/layoutWidgetLogin"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:contentDescription="@string/graph_widget_description" />
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/myContributionsWidgetView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/graph_widget_description" />
+
+    <ProgressBar
+        android:id="@+id/widgetProgress"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:visibility="visible" />
+
+</FrameLayout>

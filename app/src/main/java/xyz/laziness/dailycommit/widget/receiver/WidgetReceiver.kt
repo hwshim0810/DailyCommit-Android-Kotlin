@@ -6,9 +6,14 @@ import android.appwidget.AppWidgetProvider
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
 import android.support.v4.content.ContextCompat
+import android.view.View
 import android.widget.RemoteViews
+import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.AppWidgetTarget
+import com.bumptech.glide.request.target.Target
 import dagger.android.AndroidInjection
 import io.reactivex.Observable
 import io.reactivex.ObservableOnSubscribe
@@ -17,6 +22,7 @@ import xyz.laziness.dailycommit.R.id.myContributionsWidgetView
 import xyz.laziness.dailycommit.ui.modules.login.view.LoginActivity
 import xyz.laziness.dailycommit.utils.image.ImageHelper
 import xyz.laziness.dailycommit.widget.provider.WidgetDataProvider
+import java.lang.Exception
 import javax.inject.Inject
 
 
@@ -48,10 +54,23 @@ class WidgetReceiver : AppWidgetProvider() {
             val imageView = AppWidgetTarget(context, remoteView, R.id.myContributionsWidgetView, *appWidgetIds)
 
             Observable.create(ObservableOnSubscribe<Void> {
+                remoteView.setViewVisibility(R.id.widgetProgress, View.VISIBLE)
+
                 dataProvider.getMyContributionSVGBuilder(context)
                         .override(220, 72)
                         .placeholder(R.drawable.img_preview_graph)
                         .error(R.drawable.ic_baseline_error_outline_24px)
+                        .listener(object : RequestListener<Uri, Bitmap> {
+                            override fun onException(e: Exception?, model: Uri?, target: Target<Bitmap>?, isFirstResource: Boolean): Boolean {
+                                remoteView.setViewVisibility(R.id.widgetProgress, View.GONE)
+                                return false
+                            }
+
+                            override fun onResourceReady(resource: Bitmap?, model: Uri?, target: Target<Bitmap>?, isFromMemoryCache: Boolean, isFirstResource: Boolean): Boolean {
+                                remoteView.setViewVisibility(R.id.widgetProgress, View.GONE)
+                                return false
+                            }
+                        })
                         .into(imageView)
 
                 remoteView.run {
