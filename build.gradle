@@ -7,6 +7,7 @@ buildscript {
         gradle_version = '3.1.3'
         google_service_version = '3.2.0'
         fabric_version = '1.25.1'
+        build_plugin_version = '0.4.1'
     }
 
     repositories {
@@ -25,6 +26,7 @@ buildscript {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.gms:google-services:$google_service_version"
         classpath "io.fabric.tools:gradle:$fabric_version"
+        classpath "com.novoda:gradle-build-properties-plugin:$build_plugin_version"
     }
 }
 
