@@ -9,6 +9,4 @@ interface SplashPresenter<V: SplashView, I: SplashInteractor> : BasePresenter<V,
 
     fun chooseStartActivity()
 
-    fun isLogin(): Boolean
-
 }

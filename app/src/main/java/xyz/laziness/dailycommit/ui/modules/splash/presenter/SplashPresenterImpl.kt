@@ -24,21 +24,17 @@ class SplashPresenterImpl<V: SplashView, I: SplashInteractor>
     }
 
     override fun chooseStartActivity() {
-        getView()?.let {
-            if (isLogin()) {
+        interactor?.let {
+            if (it.isLogin()) {
                 Handler().postDelayed({
-                    it.startMainActivity()
+                    getView()?.startMainActivity()
                 }, timeOut)
             } else {
                 Handler().postDelayed({
-                    it.startLoginActivity()
+                    getView()?.startLoginActivity()
                 }, timeOut)
             }
         }
     }
 
-    override fun isLogin(): Boolean {
-        interactor?.let { return it.isLogin() }
-        return false
-    }
 }
