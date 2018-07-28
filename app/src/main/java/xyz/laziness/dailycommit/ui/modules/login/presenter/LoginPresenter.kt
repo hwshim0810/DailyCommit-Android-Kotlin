@@ -8,8 +8,8 @@ import xyz.laziness.dailycommit.ui.modules.login.view.LoginView
 
 interface LoginPresenter<V: LoginView, I: LoginInteractor> : BasePresenter<V, I> {
 
-    fun setLoginMainDisplay(): Unit?
-
     fun onHandleOauthIntent(intent: Intent?)
+
+    fun chooseView()
 
 }

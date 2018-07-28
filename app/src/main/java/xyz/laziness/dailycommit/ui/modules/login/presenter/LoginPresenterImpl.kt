@@ -1,11 +1,9 @@
 package xyz.laziness.dailycommit.ui.modules.login.presenter
 
 import android.content.Intent
-import android.util.Log
 import com.androidnetworking.error.ANError
 import io.reactivex.disposables.CompositeDisposable
 import xyz.laziness.dailycommit.data.network.github.GitHubApiConstants
-import xyz.laziness.dailycommit.data.network.github.response.OauthTokenResponse
 import xyz.laziness.dailycommit.ui.base.presenter.BasePresenterImpl
 import xyz.laziness.dailycommit.ui.modules.login.interactor.LoginInteractor
 import xyz.laziness.dailycommit.ui.modules.login.view.LoginView
@@ -24,10 +22,15 @@ class LoginPresenterImpl<V: LoginView, I: LoginInteractor>
 
     override fun onAttach(view: V?) {
         super.onAttach(view)
-        setLoginMainDisplay()
+        chooseView()
     }
 
-    override fun setLoginMainDisplay() = getView()?.openLoginChooseFragment()
+    override fun chooseView() {
+        interactor?.let {
+            if (it.isLogin()) getView()?.startMainActivity()
+            else getView()?.openLoginChooseFragment()
+        }
+    }
 
     override fun onHandleOauthIntent(intent: Intent?) {
         intent?.takeIf { it.data != null }?.run {
@@ -41,12 +44,13 @@ class LoginPresenterImpl<V: LoginView, I: LoginInteractor>
     }
 
     private fun doOauthLoginCall(code: String) {
+        val interactor = interactor
         interactor?.let {
             compositeDisposable.add(
                     it.doOauthAccessTokenCall(code)
                             .compose(schedulerHelper.ioToMainSingleScheduler())
                             .subscribe({
-                                updateLoginInfoInPreference(it, AppConstants.LoginMethod.WEB)
+                                interactor.updateLoginInfoInPreference(it, AppConstants.LoginMethod.WEB)
                                 getView()?.startMainActivity()
                             }, {
                                 it as ANError
@@ -60,6 +64,5 @@ class LoginPresenterImpl<V: LoginView, I: LoginInteractor>
         }
     }
 
-    private fun updateLoginInfoInPreference(tokenResponse: OauthTokenResponse, loginMethod: AppConstants.LoginMethod) =
-        interactor?.updateLoginInfoInPreference(tokenResponse, loginMethod)
+
 }
