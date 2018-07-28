@@ -219,6 +219,13 @@ class MainActivity : BaseActivity(), MainView, HasSupportFragmentInjector {
                 .show()
     }
 
+    fun sendLoginBroadCast() {
+        val intent = Intent(this, WidgetReceiver::class.java).apply {
+            action = AppWidgetManager.ACTION_APPWIDGET_UPDATE
+        }
+        sendBroadcast(intent)
+    }
+
     private fun setUpDrawer() {
         setSupportActionBar(toolbar)
         ActionBarDrawerToggle(this, drawerLayout, toolbar,

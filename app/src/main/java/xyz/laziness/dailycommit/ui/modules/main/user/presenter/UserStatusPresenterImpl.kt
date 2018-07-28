@@ -25,8 +25,13 @@ class UserStatusPresenterImpl<V: UserStatusView, I: UserStatusInteractor>
                     it.doUserInfoApiCall()
                             .compose(schedulerHelper.ioToMainObservableScheduler())
                             .subscribe({
-                                interactor.updateUserName(it)
-                                getView()?.setUiData(it)
+                                val isUpdated = interactor.updateUserName(it)
+                                getView()?.run {
+                                    setUiData(it)
+
+                                    if (isUpdated)
+                                        sendLoginBroadCast()
+                                }
                             }, {
                                 if (it is ANError) {
                                     if (it.errorCode == HttpURLConnection.HTTP_UNAUTHORIZED)

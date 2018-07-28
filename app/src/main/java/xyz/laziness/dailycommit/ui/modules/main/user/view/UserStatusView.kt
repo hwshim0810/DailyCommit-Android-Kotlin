@@ -8,4 +8,6 @@ interface UserStatusView : BaseView {
 
     fun setUiData(userInfoResponse: UserInfoResponse)
 
+    fun sendLoginBroadCast()
+
 }

@@ -13,8 +13,6 @@ import xyz.laziness.dailycommit.ui.modules.main.user.interactor.UserStatusIntera
 import xyz.laziness.dailycommit.ui.modules.main.user.presenter.UserStatusPresenter
 import xyz.laziness.dailycommit.ui.modules.main.view.MainActivity
 import xyz.laziness.dailycommit.utils.extensions.loadCircleImage
-import xyz.laziness.dailycommit.utils.extensions.loadImage
-import xyz.laziness.dailycommit.utils.extensions.loadRoundedCornerImage
 import xyz.laziness.dailycommit.utils.progress.ProgressHelper
 import javax.inject.Inject
 
@@ -61,5 +59,10 @@ class UserStatusFragment : BaseFragment(), UserStatusView {
                 textViewLocation.text = location
             }
         }
+    }
+
+    override fun sendLoginBroadCast() {
+        val activity = getBaseActivity() as MainActivity
+        activity.sendLoginBroadCast()
     }
 }
