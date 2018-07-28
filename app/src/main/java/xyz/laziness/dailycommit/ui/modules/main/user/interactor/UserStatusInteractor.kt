@@ -9,6 +9,6 @@ interface UserStatusInteractor : BaseInteractor {
 
     fun doUserInfoApiCall(): Observable<UserInfoResponse>
 
-    fun updateUserName(userInfoResponse: UserInfoResponse)
+    fun updateUserName(userInfoResponse: UserInfoResponse): Boolean
 
 }

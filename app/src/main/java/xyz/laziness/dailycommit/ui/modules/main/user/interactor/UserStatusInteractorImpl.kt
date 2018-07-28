@@ -14,8 +14,12 @@ class UserStatusInteractorImpl
     override fun doUserInfoApiCall(): Observable<UserInfoResponse> =
             apiHelper.doUserInfoApiCall(appPreference.getCurrentUserToken() ?: "")
 
-    override fun updateUserName(userInfoResponse: UserInfoResponse) {
-        if (appPreference.getCurrentUserName().isEmpty())
-            appPreference.setCurrentUserName(userInfoResponse.userId)
+    override fun updateUserName(userInfoResponse: UserInfoResponse): Boolean {
+        val needUpdate = appPreference.getCurrentUserName().isEmpty()
+
+        if (needUpdate)
+           appPreference.setCurrentUserName(userInfoResponse.userId)
+
+        return needUpdate
     }
 }
