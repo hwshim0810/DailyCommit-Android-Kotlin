@@ -12,10 +12,10 @@ apply plugin: 'com.novoda.build-properties'
 
 buildProperties {
     prod {
-        file rootProject.file('gradle-prod.properties')
+        using rootProject.file('gradle-prod.properties')
     }
     dev {
-        file rootProject.file('gradle.properties')
+        using rootProject.file('gradle.properties')
     }
 }
 
@@ -47,9 +47,6 @@ android {
             proguardFile 'proguard-rules.pro'
         }
 
-        dependencies {
-            implementation 'com.crashlytics.sdk.android:crashlytics:2.9.4'
-        }
     }
 
     lintOptions {
@@ -68,6 +65,7 @@ ext {
     rx2FastAndroidNetworkingVersion = '1.0.1'
     roomDatabaseVersion = '1.1.1'
     customTabHelperVersion = '1.1.2'
+    crashlyticsVersion = '2.9.4'
 }
 
 configurations {
@@ -99,7 +97,8 @@ dependencies {
     compileOnly 'javax.annotation:jsr250-api:1.0'
 
     // FireBase
-    implementation "com.google.firebase:firebase-core:${fireBaseVersion}"
+    releaseImplementation "com.google.firebase:firebase-core:${fireBaseVersion}"
+    releaseImplementation "com.crashlytics.sdk.android:crashlytics:${crashlyticsVersion}"
 
     // Reactive
     implementation "io.reactivex.rxjava2:rxjava:${rxjava2Version}"
