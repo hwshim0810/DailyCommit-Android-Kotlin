@@ -2,10 +2,10 @@ language: android
 sudo: required  # a license needs to be manually added later
 jdk: oraclejdk8
 
-#branches:
-#  only:
-#    - develop
-#    - master
+branches:
+  only:
+    - develop
+    - master
 
 notifications:
   email: false
